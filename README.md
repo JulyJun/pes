@@ -31,7 +31,7 @@ The machine will only turn on with following circumstances
  * * *
 
 ### Software use
-- CubeIDE (C/C++ - main logics)
+- CubeIDE (C/C++ - main on/off logics)
 - MySQL (DB)
 - .Net framework (C# - controler)
 - Kicad (trying to make my own PCB)
@@ -41,7 +41,7 @@ The machine will only turn on with following circumstances
 ## Plan
 
 1. Test hardware modules on Arduino (hardware defect check)
-2. Module test and Setup modules on STM32 MCU
+2. Module test and Assemble modules on STM32 MCU
 3. build main logic on MCU
 4. Design DB
 5. build DB
