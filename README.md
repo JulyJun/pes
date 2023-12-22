@@ -19,6 +19,7 @@ The machine will only turn on with following circumstances
 ### Hardwares
 - target humidifier
 - STM 32 board (Nucleo-F103RB)
+- Design State Machine for MCU
 - temperature/humidity sensor (ETH-01DV)
 - CO2 gas censor (RX-9)
 - 1ch relay module (SZH-EK082)
