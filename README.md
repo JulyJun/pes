@@ -1,8 +1,12 @@
 # Personal electricity saver
 
+[KR README](https://github.com/JulyJun/pes/blob/main/READMEko.md)
+
 ### Description
  electricity saver on personal humidifier
 
+
+ 
 The machine will only turn on with following circumstances
 
 - mostly at night time
