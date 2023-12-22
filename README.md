@@ -25,7 +25,7 @@ The machine will only turn on with following circumstances
 - 1ch relay module (SZH-EK082)
 - MQ gas censor
 - ~ethernet/wifi module~
-- I2C 16X2 module (optional)
+- I2C 16X2 lcd module (optional)
 - PIR motion sensor (optional)
 - Magnetic Door contact (optional)
 
