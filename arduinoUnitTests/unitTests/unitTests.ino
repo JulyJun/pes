@@ -4,6 +4,15 @@
 #define HUD 1
 #define RELAY 3
 #define SWITCH 9
+#define CO2E 1
+#define CO2T 0
+
+//STEP of co2
+float V1 = 0.9060;
+float V2 = 0.8345;
+float V3 = 0.7557;
+int STEP_status = 0;
+float STEP_CO2 = 0.0;
 
 void setup() {
   // put your setup code here, to run once:
@@ -16,19 +25,7 @@ void setup() {
 }
 
 void loop() {
-  if(digitalRead(SWITCH) == LOW)
-  {
-    Serial.println("switch off");
-    digitalWrite(RELAY, HIGH);    
-  }
-  else
-  {
-    Serial.println("switch on");
-    digitalWrite(RELAY, LOW);
-    delay(100);
-    digitalWrite(RELAY, HIGH); 
-  }
-  delay(100);
+ digitalWrite(RELAY, HIGH);
 }
 
 void motionDetectChecker()
