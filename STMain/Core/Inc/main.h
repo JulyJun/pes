@@ -57,6 +57,16 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define TEMP_Pin GPIO_PIN_0
+#define TEMP_GPIO_Port GPIOA
+#define GAS_Pin GPIO_PIN_1
+#define GAS_GPIO_Port GPIOA
+#define HUMID_Pin GPIO_PIN_4
+#define HUMID_GPIO_Port GPIOA
+#define PIR_Pin GPIO_PIN_9
+#define PIR_GPIO_Port GPIOA
+#define RELAY_Pin GPIO_PIN_8
+#define RELAY_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

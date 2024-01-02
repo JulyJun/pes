@@ -1,9 +1,8 @@
 #define pir 2
 #define MQ2pin 0
-#define TEMP 0
+#define TEMP 2
 #define HUD 1
-#define RELAY 3
-#define SWITCH 9
+#define RELAY 8
 #define CO2E 1
 #define CO2T 0
 
@@ -19,13 +18,16 @@ void setup() {
   Serial.begin(9600);
   //pinMode(pir, INPUT);
   pinMode(RELAY, OUTPUT);
-  pinMode(SWITCH, INPUT_PULLUP);
 
   Serial.println("Sensor ready");
 }
 
 void loop() {
- digitalWrite(RELAY, HIGH);
+ digitalWrite(RELAY, HIGH); // off
+ delay(2000);
+ digitalWrite(RELAY, LOW); // on
+ delay(2000);
+ EHT_Sensor();
 }
 
 void motionDetectChecker()
@@ -55,6 +57,8 @@ void EHT_Sensor()
 {
   float temp = analogRead(TEMP);
   float hud = analogRead(HUD);
+  Serial.print(">>ROW TEMP val: ");
+  Serial.println(temp);
   temp = -66.875 + 218.75 * (temp / 1024);
   hud = -12.5 + 125 * (hud / 1024);
   Serial.print("Temp: ");
