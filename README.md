@@ -1,5 +1,7 @@
 # Personal electricity saver
 
+[wiki](https://github.com/JulyJun/pes/wiki)
+
 [KR README](https://github.com/JulyJun/pes/blob/main/READMEko.md)
 
 ### Description
