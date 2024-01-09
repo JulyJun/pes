@@ -27,6 +27,14 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+typedef struct{
+	int charSize;
+	uint8_t charHolder;
+	bool trigger;
+	char printingBuffer[UART_BUF_SIZE];
+	char writingBuffer[UART_BUF_SIZE];
+} uartData_t;
+
 
 /* USER CODE END PTD */
 
@@ -46,13 +54,10 @@ ADC_HandleTypeDef hadc1;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-#define BUFFER_SIZE 128
-#define TWELVEBITS 4096
-#define FOURTEENBITS 16384
-#define ADC_BIT_RESOLUTION TWELVEBITS
-#define HIGH GPIO_PIN_SET
-#define LOW GPIO_PIN_RESET
 char data[BUFFER_SIZE];
+uartData_t com;
+char* command = "com ";
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -65,6 +70,7 @@ void motiontrack(void);
 void gasTrack(void);
 void THtrack(void);
 void relayUnitTest(void);
+bool UserCommands(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -83,6 +89,11 @@ int _write(int file, char *ptr, int len)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+	memset(com.printingBuffer, 0, sizeof(com.printingBuffer));
+	com.charSize = 0;
+	com.printingBuffer[com.charSize] = '\0';
+	com.trigger = false;
+	memcpy(com.writingBuffer, com.printingBuffer, sizeof(com.printingBuffer));
 
   /* USER CODE END 1 */
 
@@ -107,6 +118,8 @@ int main(void)
   MX_USART2_UART_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
+  HAL_UART_Receive_IT(&huart2, (uint8_t *)&com.charHolder, sizeof(com.charHolder));
+
   printf("device init\r\n");
   /* USER CODE END 2 */
 
@@ -114,10 +127,16 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  gasTrack();
-	  THtrack();
-	  relayUnitTest();
-	  HAL_Delay(1500);
+#if MODULETEST
+    gasTrack();
+    THtrack();
+    relayUnitTest();
+    HAL_Delay(1500);
+#endif
+
+#if DEBUGTEST
+    UserCommands();
+#endif
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -289,7 +308,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(PIR_GPIO_Port, PIR_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(RELAY_GPIO_Port, RELAY_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, RELAY_Pin|RELAY_SWITCH_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin : PIR_Pin */
   GPIO_InitStruct.Pin = PIR_Pin;
@@ -298,18 +317,85 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(PIR_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : RELAY_Pin */
-  GPIO_InitStruct.Pin = RELAY_Pin;
+  /*Configure GPIO pins : RELAY_Pin RELAY_SWITCH_Pin */
+  GPIO_InitStruct.Pin = RELAY_Pin|RELAY_SWITCH_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(RELAY_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
+/*
+ * @note: buffer size is intentionally set to 1, for reading enter key
+ * 				2Xspacebar equals to enter key
+ * */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+	if(huart->Instance == USART2)
+	{
+		if(com.charHolder == '\r')
+		{
+			printf(com.printingBuffer);
+			printf("\r\n");
+			memcpy(com.writingBuffer, com.printingBuffer, sizeof(com.printingBuffer));
+			memset(com.printingBuffer, 0, sizeof(com.printingBuffer));
+			com.charSize = 0;
+			com.printingBuffer[com.charSize] = '\0';
+			com.trigger = true;
+		}
+		else
+		{
+			com.printingBuffer[com.charSize] = com.charHolder;
+			com.printingBuffer[com.charSize + 1] = '\0';
+			printf("collecting: %c\r\n", com.charHolder);
+			com.charSize++;
+		}
+	}
+	HAL_UART_Receive_IT(&huart2, (uint8_t *)&com.charHolder, sizeof(com.charHolder));
+}
+
+bool UserCommands()
+{
+	if(com.trigger == false)
+	{
+		return false;
+	}
+	if(com.charSize < COMMAND_MIN_LENGTH)
+	{
+		return false;
+	}
+
+	size_t index = 0;
+	while(*command != '\0')
+	{
+		if(com.writingBuffer[index] != *command)
+		{
+			printf("COMMANDINIT: %d", COMMANDINIT);
+			printf("command: %c\r\nbuffer: %c\r\n", *command, com.writingBuffer[index]);
+			return false;
+		}
+		++command;
+		++index;
+	}
+	printf("str: %c\r\n", com.writingBuffer[COMMANDINIT]);
+	if(com.writingBuffer[COMMANDINIT] == 'd')
+	{
+		//TODO: do sth
+	}
+	else if(com.writingBuffer[COMMANDINIT] == 'a')
+	{
+		//TODO: do sth
+		printf("command init\r\n");
+	}
+
+	com.trigger = false;
+	return true;
+}
+
 /*
  * @note not yet completely work
  * @port/pin PA9
@@ -364,7 +450,10 @@ void THtrack(void)
 }
 void relayUnitTest(void)
 {
-	HAL_GPIO_TogglePin(RELAY_GPIO_Port, RELAY_Pin);
+	//HAL_GPIO_TogglePin(RELAY_GPIO_Port, RELAY_Pin);
+	int pinState = LOW;
+	HAL_GPIO_WritePin(RELAY_GPIO_Port, RELAY_Pin, pinState);
+	HAL_GPIO_WritePin(RELAY_SWITCH_GPIO_Port, RELAY_SWITCH_Pin, !pinState);
 }
 /* USER CODE END 4 */
 

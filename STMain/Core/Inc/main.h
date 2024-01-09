@@ -67,9 +67,26 @@ void Error_Handler(void);
 #define PIR_GPIO_Port GPIOA
 #define RELAY_Pin GPIO_PIN_8
 #define RELAY_GPIO_Port GPIOB
+#define RELAY_SWITCH_Pin GPIO_PIN_9
+#define RELAY_SWITCH_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
+#define BUFFER_SIZE 128
+#define UART_BUF_SIZE 1024
+#define TWELVEBITS 4096
+#define FOURTEENBITS 16384
+#define ADC_BIT_RESOLUTION TWELVEBITS
+#define HIGH GPIO_PIN_SET
+#define LOW GPIO_PIN_RESET
+#define MODULETEST 0
+#define DEBUGTEST 1
+#define COMMANDINIT 4
+#define COMMAND_MIN_LENGTH 6
 
+typedef enum{
+	false,
+	true
+}bool;
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
