@@ -1,0 +1,69 @@
+x1: roomtemp
+w1: roomtemp weighted
+x2: roomhumi
+w2: roomhumi weighted
+x3: outdoor temp
+w3: outdoor temp weighted
+x4: outdoor humi
+w4: outdoor humi weighted
+
+1st it is just a little humidifier
+2nd so it cannot control room temperature
+3rd it can notify user about temperature
+
+note: need  to know weekday and weekend &  daytime/night
+
+optimal room
+17 ~ 20 `C
+50 ~ 55%
+
+
+what is cold and hot?? 
+cold < 10`C
+hot > 27 `C
+
+condition 1: hot & rain ()
+todo:
+  roomtemp down
+  roomhumi down
+  
+condition 2: cold & rain
+todo:
+  roomtemp up
+  roomhumi down
+  
+condition 3: hot & dry
+todo:
+  roomtemp down
+  roomhumi up
+
+condition 4: cold & dry
+todo:
+  roomtemp up
+  roomhumi up
+
+F(X) = 
+
+        | 1/3(17<= x<= 20)
+temp =  | 0
+
+
+
+Weather = {sun, rain, cloud, snow}
+Temperature = {hot, mild, cold}
+
+****object to optimal room****
+17 ~ 20 `C
+50 ~ 55%
+
+agent gives preferences | want to turn on
+                        | want to turn off(sleep)
+                        | mutual
+                        | notice info to user
+                        
+focus on humidity
+if now 80%
+make sleep mode until 50%
+
+if now 40%
+turn on 
