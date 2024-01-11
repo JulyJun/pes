@@ -1,16 +1,16 @@
-13:35:49 **** Incremental Build of configuration Debug for project STMain ****
+15:41:10 **** Incremental Build of configuration Debug for project STMain ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:408:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  408 |         if(motionDetected == SET)
+../Core/Src/main.c:413:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
+  413 |         if(motionDetected == SET)
       |                           ^~
 ../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:433:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  433 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+../Core/Src/main.c:438:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
+  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
       |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:433:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  433 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+../Core/Src/main.c:438:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
       |                                             ~~~~^       ~~~~~~
       |                                                 |       |
       |                                                 int     double
@@ -21,11 +21,11 @@ Finished building target: STMain.elf
 arm-none-eabi-size  STMain.elf 
 arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
    text	   data	    bss	    dec	    hex	filename
-  25664	    480	   4080	  30224	   7610	STMain.elf
+  25720	    480	   4080	  30280	   7648	STMain.elf
 Finished building: default.size.stdout
  
 Finished building: STMain.list
  
 
-13:35:51 Build Finished. 0 errors, 3 warnings. (took 1s.311ms)
+15:41:11 Build Finished. 0 errors, 3 warnings. (took 1s.26ms)
 

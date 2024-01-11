@@ -376,6 +376,7 @@ bool UserCommands()
 		{
 			printf("COMMANDINIT: %d", COMMANDINIT);
 			printf("command: %c\r\nbuffer: %c\r\n", *command, com.writingBuffer[index]);
+			com.trigger = false;
 			return false;
 		}
 		++command;
@@ -391,6 +392,10 @@ bool UserCommands()
 		//TODO: do sth
 		HAL_GPIO_TogglePin(RELAY_SWITCH_GPIO_Port, RELAY_SWITCH_Pin);
 		printf("command init\r\n");
+		printf("*************\r\n");
+		printf(com.writingBuffer);
+		printf("\r\n");
+		printf("*************\r\n");
 		HAL_Delay(1000);
 	}
 
