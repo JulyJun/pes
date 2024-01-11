@@ -389,7 +389,9 @@ bool UserCommands()
 	else if(com.writingBuffer[COMMANDINIT] == 'a')
 	{
 		//TODO: do sth
+		HAL_GPIO_TogglePin(RELAY_SWITCH_GPIO_Port, RELAY_SWITCH_Pin);
 		printf("command init\r\n");
+		HAL_Delay(1000);
 	}
 
 	com.trigger = false;

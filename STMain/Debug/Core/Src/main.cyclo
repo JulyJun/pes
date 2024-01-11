@@ -6,8 +6,8 @@
 ../Core/Src/main.c:296:13:MX_GPIO_Init	1
 ../Core/Src/main.c:336:6:HAL_UART_RxCpltCallback	3
 ../Core/Src/main.c:361:6:UserCommands	7
-../Core/Src/main.c:403:6:motionTrack	2
-../Core/Src/main.c:422:6:gasTrack	1
-../Core/Src/main.c:434:6:THtrack	1
-../Core/Src/main.c:451:6:relayUnitTest	1
-../Core/Src/main.c:464:6:Error_Handler	1
+../Core/Src/main.c:405:6:motionTrack	2
+../Core/Src/main.c:424:6:gasTrack	1
+../Core/Src/main.c:436:6:THtrack	1
+../Core/Src/main.c:453:6:relayUnitTest	1
+../Core/Src/main.c:466:6:Error_Handler	1
