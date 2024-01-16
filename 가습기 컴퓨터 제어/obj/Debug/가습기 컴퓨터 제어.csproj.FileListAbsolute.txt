@@ -1,0 +1,11 @@
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\가습기 컴퓨터 제어.exe.config
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\가습기 컴퓨터 제어.exe
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\가습기 컴퓨터 제어.pdb
+C:\IotBuild\pes\가습기 컴퓨터 제어\obj\Debug\가습기 컴퓨터 제어.csproj.AssemblyReference.cache
+C:\IotBuild\pes\가습기 컴퓨터 제어\obj\Debug\가습기 컴퓨터 제어.csproj.SuggestedBindingRedirects.cache
+C:\IotBuild\pes\가습기 컴퓨터 제어\obj\Debug\가습기_컴퓨터_제어.Form1.resources
+C:\IotBuild\pes\가습기 컴퓨터 제어\obj\Debug\가습기_컴퓨터_제어.Properties.Resources.resources
+C:\IotBuild\pes\가습기 컴퓨터 제어\obj\Debug\가습기 컴퓨터 제어.csproj.GenerateResource.cache
+C:\IotBuild\pes\가습기 컴퓨터 제어\obj\Debug\가습기 컴퓨터 제어.csproj.CoreCompileInputs.cache
+C:\IotBuild\pes\가습기 컴퓨터 제어\obj\Debug\가습기 컴퓨터 제어.exe
+C:\IotBuild\pes\가습기 컴퓨터 제어\obj\Debug\가습기 컴퓨터 제어.pdb
