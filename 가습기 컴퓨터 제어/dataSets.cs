@@ -8,10 +8,14 @@ namespace APICommon
 {
     class WeatherApiCommon
     {
+        readonly string[] FixedHour = { "0000", "0100", "0200", "0300", "0400", "0500", "0600", "0700", 
+                                                                    "0800", "0900", "1000", "1100", "1200", "1300", "1400", "1500", 
+                                                                    "1600", "1700","1800","1900", "2000","2100","2200", "2300" };
         public string Url { get { return _url; } set { _url = value; } }
         public string ServiceKey { get { return _ServiceKey; } set { _ServiceKey = value; } }
         public int PageNo { get { return _pageNo; } }
         public int NumberOfRow { get { return _numberOfRow; } }
+        public DateTime DateTime { get { return _dateTime;  } set { _dateTime = value;  } }
         public string Date { get { return _date; } set { _date = value; } }
         public string Time { get { return _time; } set { _time = value; } }
         public double nx { get { return _nx; } set { _nx = value; } }
@@ -82,6 +86,7 @@ namespace APICommon
         private double _ny;
         private EAccessMethod _accessType;
         private string[] _basetimeSelect = { "0200", "0500", "0800", "1100", "1400", "1700", "2000", "2300"};
+        private DateTime _dateTime;
 
         public WeatherApiCommon() { }
 
@@ -106,8 +111,13 @@ namespace APICommon
         {
             GPSMath map = new GPSMath();
             SPositionXY tupleGrid = map.ConvertGpsToPositions(new SPositionXY { latitude = 37.471139, longitude = 127.09 });
-            Date = DateTime.Now.ToString("yyyyMMdd");
+            DateTime = DateTime.Now;
+            Date = DateTime.ToString("yyyyMMdd");
+            //  
+            //  base_time, api 생성시간을 나타냄
+            //
             Time = GetTimeTraversal(1);
+            
             return Url + $"?ServiceKey={ServiceKey}&numOfRows={NumberOfRow}&pageNo={PageNo}&dataType=XML&base_date={Date}&base_time={Time}&nx={tupleGrid.latitude}&ny={tupleGrid.longitude}";
         }
 
@@ -126,19 +136,25 @@ namespace APICommon
             StreamReader sr = new StreamReader(s);
             return sr.ReadToEnd();
         }
-        public string ExtractXMLQuery(string query, string categoryValue)
+        public string ExtractXMLQuery(string query, string categoryValue, int hour = 0)
         {
             string value = "";
             XmlDocument xd = new XmlDocument();
             xd.LoadXml(query);
             XmlNode xn = xd["response"]["body"]["items"];
 
+            if(hour < 0 || hour > 23)
+            {
+                hour = 0;
+            }
+
             for(int index = 0; index < xn.ChildNodes.Count; index++)
             {
                 if (xn.ChildNodes[index]["category"].InnerText.Equals(categoryValue) 
-                    && xn.ChildNodes[index]["fcstDate"].InnerText.Equals(DateTime.Now.AddDays(1).ToString("yyyyMMdd")))
+                    && xn.ChildNodes[index]["fcstTime"].InnerText.Equals(FixedHour[hour]))
                 {
-                    value = xn.ChildNodes[index]["fcstValue"].InnerText + "\n";
+                    value = xn.ChildNodes[index]["fcstValue"].InnerText;
+                    break;
                 }
             }
             return value;
@@ -147,7 +163,7 @@ namespace APICommon
         public EWeatherStatus ReadWeatherStatus(string SKYinput)
         {
             EWeatherStatus status;
-            switch( SKYinput.Substring(0,1) )
+            switch( SKYinput )
             {
                 case "1":
                     status = EWeatherStatus.SUNNY;
