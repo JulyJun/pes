@@ -101,6 +101,7 @@
   <ItemGroup>
     <Compile Include="dataSets.cs" />
     <Compile Include="dataSets_Math.cs" />
+    <Compile Include="DB.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControls = new System.Windows.Forms.TabControl();
             this.tab1 = new System.Windows.Forms.TabPage();
+            this.dateTime_label = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.AvgTempYest_Box = new System.Windows.Forms.TextBox();
@@ -44,9 +45,6 @@
             this.AvgHumYest_Box = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -70,13 +68,31 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.labelCriteria = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.dateTime_label = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.tabControls.SuspendLayout();
             this.tab1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -91,6 +107,7 @@
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabPage1.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControls
@@ -117,6 +134,15 @@
             this.tab1.TabIndex = 0;
             this.tab1.Text = "Overview";
             this.tab1.UseVisualStyleBackColor = true;
+            // 
+            // dateTime_label
+            // 
+            this.dateTime_label.AutoSize = true;
+            this.dateTime_label.Location = new System.Drawing.Point(14, 10);
+            this.dateTime_label.Name = "dateTime_label";
+            this.dateTime_label.Size = new System.Drawing.Size(40, 21);
+            this.dateTime_label.TabIndex = 6;
+            this.dateTime_label.Text = "오늘";
             // 
             // groupBox4
             // 
@@ -179,9 +205,9 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.radioButton3);
-            this.groupBox5.Controls.Add(this.radioButton2);
-            this.groupBox5.Controls.Add(this.radioButton1);
+            this.groupBox5.Controls.Add(this.checkBox3);
+            this.groupBox5.Controls.Add(this.checkBox2);
+            this.groupBox5.Controls.Add(this.checkBox1);
             this.groupBox5.Controls.Add(this.chart2);
             this.groupBox5.Location = new System.Drawing.Point(6, 15);
             this.groupBox5.Name = "groupBox5";
@@ -190,51 +216,18 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "그래프";
             // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(6, 118);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(153, 25);
-            this.radioButton3.TabIndex = 3;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "radioButton3";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 87);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(154, 25);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 56);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(150, 25);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
             // chart2
             // 
-            chartArea7.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.chart2.Legends.Add(legend7);
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart2.Legends.Add(legend1);
             this.chart2.Location = new System.Drawing.Point(142, 28);
             this.chart2.Name = "chart2";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.chart2.Series.Add(series7);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart2.Series.Add(series1);
             this.chart2.Size = new System.Drawing.Size(540, 598);
             this.chart2.TabIndex = 0;
             this.chart2.Text = "chart2";
@@ -438,19 +431,19 @@
             // 
             // chart1
             // 
-            chartArea8.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea8);
-            legend8.Enabled = false;
-            legend8.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Row;
-            legend8.Name = "Legend1";
-            this.chart1.Legends.Add(legend8);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Enabled = false;
+            legend2.LegendStyle = System.Windows.Forms.DataVisualization.Charting.LegendStyle.Row;
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(6, 46);
             this.chart1.Name = "chart1";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.chart1.Series.Add(series8);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(319, 300);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -467,6 +460,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.groupBox8);
             this.tabPage1.Controls.Add(this.richTextBox2);
             this.tabPage1.Controls.Add(this.button2);
             this.tabPage1.Controls.Add(this.richTextBox1);
@@ -477,6 +471,189 @@
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "testArea";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.textBox13);
+            this.groupBox8.Controls.Add(this.textBox12);
+            this.groupBox8.Controls.Add(this.textBox11);
+            this.groupBox8.Controls.Add(this.textBox10);
+            this.groupBox8.Controls.Add(this.textBox9);
+            this.groupBox8.Controls.Add(this.textBox8);
+            this.groupBox8.Controls.Add(this.label7);
+            this.groupBox8.Controls.Add(this.label6);
+            this.groupBox8.Controls.Add(this.label5);
+            this.groupBox8.Controls.Add(this.textBox7);
+            this.groupBox8.Controls.Add(this.label10);
+            this.groupBox8.Controls.Add(this.label9);
+            this.groupBox8.Controls.Add(this.label8);
+            this.groupBox8.Controls.Add(this.label4);
+            this.groupBox8.Controls.Add(this.button3);
+            this.groupBox8.Location = new System.Drawing.Point(8, 259);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(1120, 100);
+            this.groupBox8.TabIndex = 4;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "SQL 테스트 데이터";
+            // 
+            // textBox13
+            // 
+            this.textBox13.Font = new System.Drawing.Font("메이플스토리", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox13.Location = new System.Drawing.Point(624, 63);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.ReadOnly = true;
+            this.textBox13.Size = new System.Drawing.Size(109, 25);
+            this.textBox13.TabIndex = 23;
+            this.textBox13.Text = "불러오는중...";
+            this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox12
+            // 
+            this.textBox12.Font = new System.Drawing.Font("메이플스토리", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox12.Location = new System.Drawing.Point(343, 63);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.ReadOnly = true;
+            this.textBox12.Size = new System.Drawing.Size(109, 25);
+            this.textBox12.TabIndex = 23;
+            this.textBox12.Text = "불러오는중...";
+            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox11
+            // 
+            this.textBox11.Font = new System.Drawing.Font("메이플스토리", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBox11.Location = new System.Drawing.Point(81, 63);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.ReadOnly = true;
+            this.textBox11.Size = new System.Drawing.Size(109, 25);
+            this.textBox11.TabIndex = 22;
+            this.textBox11.Text = "불러오는중...";
+            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(864, 24);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(109, 21);
+            this.textBox10.TabIndex = 21;
+            // 
+            // textBox9
+            // 
+            this.textBox9.Location = new System.Drawing.Point(624, 21);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(109, 21);
+            this.textBox9.TabIndex = 20;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Location = new System.Drawing.Point(343, 25);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(109, 21);
+            this.textBox8.TabIndex = 19;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("메이플스토리", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.Location = new System.Drawing.Point(802, 27);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(56, 18);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "집 습도:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("메이플스토리", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Location = new System.Drawing.Point(562, 24);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 18);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "집 온도:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("메이플스토리", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Location = new System.Drawing.Point(269, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 18);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "가스 농도:";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(81, 21);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(109, 21);
+            this.textBox7.TabIndex = 15;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("메이플스토리", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.Location = new System.Drawing.Point(543, 70);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(72, 18);
+            this.label10.TabIndex = 14;
+            this.label10.Text = "방에 있음:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("메이플스토리", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Location = new System.Drawing.Point(269, 66);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(70, 18);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "가스 대략:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("메이플스토리", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Location = new System.Drawing.Point(6, 66);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(77, 18);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "CO2 대략:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("메이플스토리", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(6, 24);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 18);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "CO2 농도:";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(987, 3);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(133, 97);
+            this.button3.TabIndex = 5;
+            this.button3.Text = "Data 보내기";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(8, 146);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(964, 97);
+            this.richTextBox2.TabIndex = 3;
+            this.richTextBox2.Text = "";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(995, 146);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(133, 97);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "MYSQL";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // richTextBox1
             // 
@@ -500,32 +677,35 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // dateTime_label
+            // checkBox1
             // 
-            this.dateTime_label.AutoSize = true;
-            this.dateTime_label.Location = new System.Drawing.Point(14, 10);
-            this.dateTime_label.Name = "dateTime_label";
-            this.dateTime_label.Size = new System.Drawing.Size(40, 21);
-            this.dateTime_label.TabIndex = 6;
-            this.dateTime_label.Text = "오늘";
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 33);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(128, 25);
+            this.checkBox1.TabIndex = 1;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // checkBox2
             // 
-            this.button2.Location = new System.Drawing.Point(995, 146);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(133, 97);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "MYSQL";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(6, 64);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(132, 25);
+            this.checkBox2.TabIndex = 2;
+            this.checkBox2.Text = "checkBox2";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
-            // richTextBox2
+            // checkBox3
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(8, 146);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(964, 97);
-            this.richTextBox2.TabIndex = 3;
-            this.richTextBox2.Text = "";
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(6, 95);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(131, 25);
+            this.checkBox3.TabIndex = 3;
+            this.checkBox3.Text = "checkBox3";
+            this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -558,6 +738,8 @@
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.tabPage1.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -593,9 +775,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox AvgHumYest_Box;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.RichTextBox richTextBox1;
@@ -606,6 +785,25 @@
         private System.Windows.Forms.Label dateTime_label;
         private System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

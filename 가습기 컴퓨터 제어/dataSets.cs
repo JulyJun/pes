@@ -141,6 +141,12 @@ namespace APICommon
             string value = "";
             XmlDocument xd = new XmlDocument();
             xd.LoadXml(query);
+            if(xd.InnerText.Equals("SERVICE ERRORAPPLICATION_ERROR01"))
+            {
+                //do noting so far
+                return "do noting";
+            }
+
             XmlNode xn = xd["response"]["body"]["items"];
 
             if(hour < 0 || hour > 23)
