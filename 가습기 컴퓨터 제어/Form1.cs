@@ -13,6 +13,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using static System.Net.Mime.MediaTypeNames;
 using DBCommon;
 using static DBCommon.MysqlDB;
+using pAlgorithms;
 
 namespace 가습기_컴퓨터_제어
 {
@@ -21,6 +22,7 @@ namespace 가습기_컴퓨터_제어
         const int HOUR = 216000000;
         private WeatherApiCommon dataSets;
         private MysqlDB myDb;
+        private Algorithms calc = new Algorithms();
         private string temp_g;
         private string humid_g;
         private string dataQuery;
@@ -29,6 +31,7 @@ namespace 가습기_컴퓨터_제어
         private System.Drawing.Image[] images = { Properties.Resources.kommiMad, Properties.Resources.kommiNelm, Properties.Resources.kommiHappy, Properties.Resources.kommiCry };
         private Timer timer;
         private DateTime startTime;
+        private int counter = 0;
         //private string Conn = "Server=localhost;Database=HumidTempBoard;Uid=root;Pwd=root;";
         private enum EEmote 
         {
@@ -45,8 +48,35 @@ namespace 가습기_컴퓨터_제어
             timer.Interval = 1000;
             timer.Start();
             timer.Tick += timer1_Tick;
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (counter % (30 * 60) == 0)
+            {
+                // 데이터베이스에 추가함
+                // TODO: 나중에 바꿀것
+                DataList dl = new DataList();
+                dl.co2 = Convert.ToSingle("30");
+                dl.gas = Convert.ToSingle("30");
+                dl.temperature = Convert.ToSingle("30");
+                dl.humidity = Convert.ToSingle("30");
+                dl.roomOccupied = EYesNo.Y;
+                dl.outdoorTemperature = Convert.ToSingle("10");
+                dl.outdoorHumidity = Convert.ToSingle("10");
+                myDb.DataCollections = dl;
+                myDb.InsertData();
+                counter = 0;
+            }
 
+            counter++;
+
+            this.Text = title + $" (경과시간: {(DateTime.MinValue + (DateTime.Now - startTime)).ToString("HH:mm:ss")})";
             
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            InitializeValue();
         }
 
         private void InitializeValue()
@@ -56,6 +86,8 @@ namespace 가습기_컴퓨터_제어
             ChartArea chartArea = new ChartArea();
             myDb = new MysqlDB();
             dataSets = new WeatherApiCommon();
+            dataSets.baseTimeSet(DateTime.Now);
+            dataSets.HourPicker(DateTime.Now);
             dataQuery = dataSets.ReqestApi();
             title = this.Text;
 
@@ -72,10 +104,9 @@ namespace 가습기_컴퓨터_제어
             series.IsValueShownAsLabel = true;
             series.IsVisibleInLegend = false;
 
-
             for (int axisX = 0; axisX < dataLength; axisX++)
             {
-                series.Points.AddXY(axisX, weightedData(axisX));
+                series.Points.AddXY(axisX, calc.weightedData(axisX));
             }
             chart1.ChartAreas.Add(chartArea);
             chart1.Series.Add(series);
@@ -87,55 +118,39 @@ namespace 가습기_컴퓨터_제어
             chartArea.AxisX.ScaleView.Zoom(0, 30);
             chartArea.AxisY.ScaleView.Zoom(-1, 2);
 
-            temp_g = dataSets.ExtractXMLQuery(dataQuery, WeatherApiCommon.EForcastCode.TMP.ToString(), 20);
-            humid_g = dataSets.ExtractXMLQuery(dataQuery, WeatherApiCommon.EForcastCode.REH.ToString(), 20);
+            temp_g = dataSets.GrabNearestTimeValFromAPI(dataQuery, WeatherApiCommon.EForcastCode.TMP.ToString());
+            humid_g = dataSets.GrabNearestTimeValFromAPI(dataQuery, WeatherApiCommon.EForcastCode.REH.ToString());
             textBox1.Text = humid_g  + "%";
             textBox3.Text = temp_g + "°C";
-            WeatherApiCommon.EWeatherStatus status = dataSets.ReadWeatherStatus(dataSets.ExtractXMLQuery(dataQuery, WeatherApiCommon.EForcastCode.SKY.ToString(), 20));
+            WeatherApiCommon.EWeatherStatus status = dataSets.ReadWeatherStatus(dataSets.GrabNearestTimeValFromAPI(dataQuery, WeatherApiCommon.EForcastCode.SKY.ToString()));
             textBox6.Text = status.ToString();
             dateTime_label.Text = $"{dataSets.Date.Substring(0, 4)}년 {dataSets.Date.Substring(4, 2)}월 {dataSets.Date.Substring(6,2)}일 { dataSets.DateTime.DayOfWeek.ToString() }" ;
+            groupBox2.Text = $"{dataSets.ForcastTime}시 날씨요약";
         }
 
-        private double calculatedLine(double x)
+        private void UpdateWeather()
         {
-            return -1 / 20 * (x - 75);
+            dataSets.baseTimeSet(DateTime.Now);
+            dataSets.HourPicker(DateTime.Now);
+            dataQuery = dataSets.ReqestApi();
         }
-        private double weightedData(double humid)
-        {
-            if (humid >= 60 && humid <70)
-            {
-                return 1;
-            }
-            else if (humid >= 75 && humid < 55)
-            {
-                return 0;
-            }
-            else
-            {
-                // TODO
-                // do some magic Algorithm here
-                return calculatedLine(humid);
-            }
-        }
+
         private void emoteImg_DoubleClick(object sender, EventArgs e)
         {
             currentImageIndex = ( currentImageIndex + 1 ) % images.Length;
             emoteImg.Image = images[currentImageIndex];
-        }
+        }       
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            InitializeValue();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            this.Text = title + $" (경과시간: {( DateTime.MinValue + ( DateTime.Now - startTime ) ).ToString("HH:mm:ss")})";
-        }
-
+        
+        //  *********************************************************************
+        //  *                                                                                                                       *
+        //  *                                               test Area                                                      *
+        //  *                                                                                                                       *
+        //  *********************************************************************
         private void button1_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text = dataQuery;
+            //richTextBox1.Text = dataQuery;
+            richTextBox1.Text = dataSets.GetUrl();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -162,6 +177,7 @@ namespace 가습기_컴퓨터_제어
                 dl.outdoorTemperature= Convert.ToSingle(temp_g);
                 dl.outdoorHumidity= Convert.ToSingle(humid_g);
                 myDb.DataCollections = dl;
+                myDb.InsertData();
                 textBox2.Text = textBox10.Text; // 습도
                 textBox4.Text = textBox9.Text;  // 온도
                 textBox11.Text = myDb.DataCollections.co2Approx.ToString();
@@ -174,7 +190,7 @@ namespace 가습기_컴퓨터_제어
                 double humid;
                 if (double.TryParse(textBox2.Text, out humid))
                 {
-                    double result = weightedData(humid);
+                    double result = calc.weightedData(humid);
                     if(result == 0)
                     {
                         status_label.Text = EEmote.우울.ToString();

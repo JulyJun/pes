@@ -20,6 +20,7 @@ namespace APICommon
         public string Time { get { return _time; } set { _time = value; } }
         public double nx { get { return _nx; } set { _nx = value; } }
         public double ny { get { return _ny; } set { _ny = value; } }
+        public string ForcastTime { get { return _fctTime; } set { _fctTime = value; } }
         public string AccessType
         {
             get { return _accessType.ToString(); }
@@ -86,7 +87,9 @@ namespace APICommon
         private double _ny;
         private EAccessMethod _accessType;
         private string[] _basetimeSelect = { "0200", "0500", "0800", "1100", "1400", "1700", "2000", "2300"};
+        private string CurrentBaseTime;
         private DateTime _dateTime;
+        private string _fctTime;
 
         public WeatherApiCommon() { }
 
@@ -107,6 +110,31 @@ namespace APICommon
         }
         ~WeatherApiCommon() { }
 
+        public bool baseTimeSet(DateTime currentTime)
+        {
+            if (currentTime == null)
+            {
+                // unsuccessful return
+                return false;
+            }
+            int numMax, index = 0, closestTime = int.MinValue;
+            string currTime = "";
+            DateTime = currentTime;
+            currTime = currentTime.ToString("HHmm");
+            // 현재시간0100
+            // 베이스 0200
+            for(int i = 0; i < _basetimeSelect.Length; i++)
+            {
+                numMax = int.Parse(_basetimeSelect[i]) - int.Parse(currTime);
+                if(numMax <= 0 && numMax > closestTime)
+                {
+                    closestTime = numMax;
+                    index = i;
+                }
+            }
+            CurrentBaseTime = _basetimeSelect[index];
+            return true;
+        }
         public string GetUrl(EAccessMethod accessDefault = EAccessMethod.GET)
         {
             GPSMath map = new GPSMath();
@@ -118,7 +146,7 @@ namespace APICommon
             //
             Time = GetTimeTraversal(1);
             
-            return Url + $"?ServiceKey={ServiceKey}&numOfRows={NumberOfRow}&pageNo={PageNo}&dataType=XML&base_date={Date}&base_time={Time}&nx={tupleGrid.latitude}&ny={tupleGrid.longitude}";
+            return Url + $"?ServiceKey={ServiceKey}&numOfRows={NumberOfRow}&pageNo={PageNo}&dataType=XML&base_date={Date}&base_time={CurrentBaseTime}&nx={tupleGrid.latitude}&ny={tupleGrid.longitude}";
         }
 
         public string GetTimeTraversal(int idx)
@@ -136,34 +164,42 @@ namespace APICommon
             StreamReader sr = new StreamReader(s);
             return sr.ReadToEnd();
         }
-        public string ExtractXMLQuery(string query, string categoryValue, int hour = 0)
+        public string GrabNearestTimeValFromAPI(string query, string categoryValue)
         {
             string value = "";
+            string nearestTimeStr = "";
+            string nearestDay = "";
             XmlDocument xd = new XmlDocument();
             xd.LoadXml(query);
-            if(xd.InnerText.Equals("SERVICE ERRORAPPLICATION_ERROR01"))
+            XmlNode xmlNormalState = xd["response"]["header"]["resultMsg"];
+            if (xmlNormalState.InnerText != "NORMAL_SERVICE")
             {
-                //do noting so far
-                return "do noting";
-            }
+                // 쿼리 에러
+                return xmlNormalState.InnerText;
+            }            
 
-            XmlNode xn = xd["response"]["body"]["items"];
-
-            if(hour < 0 || hour > 23)
+            XmlNode xn = xd["response"]["body"]["items"];            
+            nearestTimeStr= HourPicker(DateTime);
+            if(nearestTimeStr.Equals("0000"))
             {
-                hour = 0;
+                nearestDay = (int.Parse(Date) + 1).ToString();
             }
-
-            for(int index = 0; index < xn.ChildNodes.Count; index++)
+            else
+            {
+                nearestDay = Date;
+            }
+            for (int index = 0; index < xn.ChildNodes.Count; index++)
             {
                 if (xn.ChildNodes[index]["category"].InnerText.Equals(categoryValue) 
-                    && xn.ChildNodes[index]["fcstTime"].InnerText.Equals(FixedHour[hour]))
+                    && xn.ChildNodes[index]["fcstDate"].InnerText.Equals(nearestDay)
+                    && xn.ChildNodes[index]["fcstTime"].InnerText.Equals(nearestTimeStr))
                 {
                     value = xn.ChildNodes[index]["fcstValue"].InnerText;
-                    break;
+                    ForcastTime = $"{xn.ChildNodes[index]["fcstDate"].InnerText}, {xn.ChildNodes[index]["fcstTime"].InnerText}";
                 }
             }
-            return value;
+
+             return value;
         }
 
         public EWeatherStatus ReadWeatherStatus(string SKYinput)
@@ -215,7 +251,17 @@ namespace APICommon
             }
             return status;
         }
+        public string HourPicker(DateTime now)
+        {
+            string str = now.ToString("HH");
+            int toNumber = (int.Parse(str) + 1) * 100;
+            str = toNumber.ToString("D4");
+            if (str.Equals("2400"))
+            {
+                str = "0000";
+            }
+            return str;
+        }
+        // END OF CLASS
     }
-
-
 }

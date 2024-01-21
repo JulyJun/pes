@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace APICommon
 {
+
     // 요약:
     //          기상청 격자 <-> 위경도 변경
     class GPSMath
