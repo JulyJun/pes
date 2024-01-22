@@ -122,8 +122,10 @@ namespace 가습기_컴퓨터_제어
             humid_g = dataSets.GrabNearestTimeValFromAPI(dataQuery, WeatherApiCommon.EForcastCode.REH.ToString());
             textBox1.Text = humid_g  + "%";
             textBox3.Text = temp_g + "°C";
-            WeatherApiCommon.EWeatherStatus status = dataSets.ReadWeatherStatus(dataSets.GrabNearestTimeValFromAPI(dataQuery, WeatherApiCommon.EForcastCode.SKY.ToString()));
-            textBox6.Text = status.ToString();
+            WeatherApiCommon.ESKYStatus status = dataSets.ReadWeatherStatus(dataSets.GrabNearestTimeValFromAPI(dataQuery, WeatherApiCommon.EForcastCode.SKY.ToString()));
+            textBox5.Text = status.ToString();
+            int rainCheck = dataSets.FcstRainCount(dataQuery);
+            textBox6.Text = rainCheck > 0 ? "비 예상" : "비 예보없음";
             dateTime_label.Text = $"{dataSets.Date.Substring(0, 4)}년 {dataSets.Date.Substring(4, 2)}월 {dataSets.Date.Substring(6,2)}일 { dataSets.DateTime.DayOfWeek.ToString() }" ;
             groupBox2.Text = $"{dataSets.ForcastTime}시 날씨요약";
         }
@@ -139,7 +141,7 @@ namespace 가습기_컴퓨터_제어
         {
             currentImageIndex = ( currentImageIndex + 1 ) % images.Length;
             emoteImg.Image = images[currentImageIndex];
-        }       
+        }
 
         
         //  *********************************************************************
@@ -209,6 +211,11 @@ namespace 가습기_컴퓨터_제어
                     richTextBox1.Text = result.ToString();
                 }
             }
+        }
+
+        private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {
+
         }
     }
 }

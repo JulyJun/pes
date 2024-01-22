@@ -2,6 +2,7 @@
 using System.IO;
 using System.Net;
 using System.Xml;
+using Google.Protobuf.WellKnownTypes;
 using static APICommon.GPSMath;
 
 namespace APICommon
@@ -44,7 +45,7 @@ namespace APICommon
         }
         public enum EForcastCode
         { 
-            TMP,                                        // 기온
+            TMP,                                       // 기온
             RN1,                                        // 1시간 강수량
             SKY,                                       // 하늘상태
             UUU,                                       // 동서바람성분
@@ -54,9 +55,20 @@ namespace APICommon
             LGT,                                       // 낙뢰
             VEC,                                       // 풍향
             WSD,                                      // 풍속
+            PCP,                                      // 강수
+            SNO                                       // 적설
         }
-
-        public enum EWeatherStatus
+        // TODO: 데이터에 뭐가 들어있는지 채울것
+        public enum EPCPStatus
+        {
+            강수없음
+        }
+        // TODO: 데이터에 뭐가 들어있는지 채울것
+        public enum ESNOStatus
+        {
+            적설없음
+        }
+        public enum ESKYStatus
         {
             SUNNY,
             CLOUDY,
@@ -202,22 +214,62 @@ namespace APICommon
              return value;
         }
 
-        public EWeatherStatus ReadWeatherStatus(string SKYinput)
+        // <summary>
+        // 0 반환시 눈/비 없음, 그 외 횟수로 반환, -1일시 접속불가
+        // </summary>
+        public int FcstRainCount(string query)
         {
-            EWeatherStatus status;
+            string nearestTimeStr = "";
+            string nearestDay = "";
+            int rain = 0;
+            XmlDocument xd = new XmlDocument();
+            xd.LoadXml(query);
+            XmlNode xmlNormalState = xd["response"]["header"]["resultMsg"];
+            if (xmlNormalState.InnerText != "NORMAL_SERVICE")
+            {
+                // 쿼리 에러
+                return -1;
+            }
+
+            XmlNode xn = xd["response"]["body"]["items"];
+            nearestTimeStr = HourPicker(DateTime);
+            if (nearestTimeStr.Equals("0000"))
+            {
+                nearestDay = (int.Parse(Date) + 2).ToString();
+            }
+            else
+            {
+                nearestDay = (int.Parse(Date) + 1).ToString();
+            }
+
+            for (int index = 0; index < xn.ChildNodes.Count; index++)
+            {
+                if (xn.ChildNodes[index]["category"].InnerText.Equals("PTY")
+                    && xn.ChildNodes[index]["fcstDate"].InnerText.Equals(nearestDay)
+                    && xn.ChildNodes[index]["fcstValue"].InnerText.Equals("1"))
+                {
+                    rain++;
+                }
+            }
+            return rain;
+        }
+
+        public ESKYStatus ReadWeatherStatus(string SKYinput)
+        {
+            ESKYStatus status;
             switch( SKYinput )
             {
                 case "1":
-                    status = EWeatherStatus.SUNNY;
+                    status = ESKYStatus.SUNNY;
                     break;
                 case "3":
-                    status = EWeatherStatus.CLOUDY;
+                    status = ESKYStatus.CLOUDY;
                     break;
                 case "4":
-                    status = EWeatherStatus.FOGGY;
+                    status = ESKYStatus.FOGGY;
                     break;
                 default:
-                    status = EWeatherStatus.NODATA; 
+                    status = ESKYStatus.NODATA; 
                     break;
             }
             return status;
