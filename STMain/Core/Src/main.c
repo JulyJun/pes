@@ -21,8 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <stdio.h>
-#include "string.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,6 +56,7 @@ UART_HandleTypeDef huart2;
 char data[BUFFER_SIZE];
 uartData_t com;
 char* command = "com ";
+EState CurrentState;
 
 /* USER CODE END PV */
 
@@ -71,6 +71,15 @@ void gasTrack(void);
 void THtrack(void);
 void relayUnitTest(void);
 bool UserCommands(void);
+
+StatusTypeDef InitSystem(void);
+StatusTypeDef HandShake(void);
+StatusTypeDef Request_SQL(void);
+StatusTypeDef Controller(void);
+StatusTypeDef ReadModules(void);
+StatusTypeDef SleepMode(void);
+StatusTypeDef WakeUPMode(void);
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -80,6 +89,7 @@ int _write(int file, char *ptr, int len)
 	HAL_UART_Transmit(&huart2, (uint8_t *)ptr, len, 500);
 	return len;
 }
+
 /* USER CODE END 0 */
 
 /**
@@ -89,11 +99,11 @@ int _write(int file, char *ptr, int len)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	memset(com.printingBuffer, 0, sizeof(com.printingBuffer));
+	memset(com.printingBuffer, 0, UART_BUF_SIZE);
 	com.charSize = 0;
 	com.printingBuffer[com.charSize] = '\0';
 	com.trigger = false;
-	memcpy(com.writingBuffer, com.printingBuffer, sizeof(com.printingBuffer));
+	memcpy(com.writingBuffer, com.printingBuffer, UART_BUF_SIZE);
 
   /* USER CODE END 1 */
 
@@ -121,6 +131,7 @@ int main(void)
   HAL_UART_Receive_IT(&huart2, (uint8_t *)&com.charHolder, sizeof(com.charHolder));
 
   printf("device init\r\n");
+  InitSystem();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -134,8 +145,32 @@ int main(void)
     HAL_Delay(1500);
 #endif
 
-#if DEBUGTEST
+#if DEBUG_TEST
     UserCommands();
+#endif
+
+#if READY_TO_USE
+    StatusTypeDef safeRun;
+    StateTypeDef runState = INIT;
+    switch (runState)
+    {
+		case SQL_REQUEST:
+			Request_SQL();
+			break;
+		case CONTROL_SYSTEM:
+			Controller();
+			break;
+		case READ_MODULES:
+			ReadModules();
+			break;
+		case SLEEP:
+
+			break;
+		default:
+			// should not enter
+			assert(false);
+			break;
+	}
 #endif
     /* USER CODE END WHILE */
 
@@ -337,7 +372,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
 	if(huart->Instance == USART2)
 	{
-		if(com.charHolder == '\r')
+		if(com.charHolder == '\n')
 		{
 			printf(com.printingBuffer);
 			printf("\r\n");
@@ -351,11 +386,47 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		{
 			com.printingBuffer[com.charSize] = com.charHolder;
 			com.printingBuffer[com.charSize + 1] = '\0';
-			printf("collecting: %c\r\n", com.charHolder);
+			// printf("%c", com.charHolder);
 			com.charSize++;
 		}
 	}
 	HAL_UART_Receive_IT(&huart2, (uint8_t *)&com.charHolder, sizeof(com.charHolder));
+}
+
+StatusTypeDef InitSystem()
+{
+	HandShake();
+	ReadModules();
+	Request_SQL();
+	Controller();
+
+	return StatusTypeDef.NORMAL;
+}
+StatusTypeDef HandShake()
+{
+	return StatusTypeDef.NORMAL;
+}
+StatusTypeDef Request_SQL()
+{
+	return StatusTypeDef.NORMAL;
+}
+StatusTypeDef ReadModules()
+{
+	return StatusTypeDef.NORMAL;
+}
+StatusTypeDef SleepMode()
+{
+	// SUSPEND SYSTICK
+	HAL_SuspendTick();
+	// ENABLE POWER PERIPHERAL
+	__HAL_RCC_PWR_CLK_ENABLE();
+	// SLEEP MODE
+	HAL_PWR_EnterSLEEPMode(PWR_MAINREGULATOR_ON, PWR_SLEEPENTRY_WFI);
+}
+
+StatusTypeDef WakeUPMode()
+{
+	HAL_ResumeTick();
 }
 
 bool UserCommands()
@@ -458,9 +529,9 @@ void THtrack(void)
 void relayUnitTest(void)
 {
 	//HAL_GPIO_TogglePin(RELAY_GPIO_Port, RELAY_Pin);
-	int pinState = LOW;
+	int pinState = HIGH;
 	HAL_GPIO_WritePin(RELAY_GPIO_Port, RELAY_Pin, pinState);
-	HAL_GPIO_WritePin(RELAY_SWITCH_GPIO_Port, RELAY_SWITCH_Pin, !pinState);
+	HAL_GPIO_WritePin(RELAY_SWITCH_GPIO_Port, RELAY_SWITCH_Pin, pinState);
 }
 /* USER CODE END 4 */
 

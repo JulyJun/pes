@@ -31,7 +31,9 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "stdio.h"
+#include "string.h"
+#include "assert.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -79,7 +81,8 @@ void Error_Handler(void);
 #define HIGH GPIO_PIN_SET
 #define LOW GPIO_PIN_RESET
 #define MODULETEST 0
-#define DEBUGTEST 1
+#define DEBUG_TEST 0
+#define READY_TO_USE 1
 #define COMMANDINIT 4
 #define COMMAND_MIN_LENGTH 6
 
@@ -87,6 +90,19 @@ typedef enum{
 	false,
 	true
 }bool;
+
+typedef enum{
+	INIT,
+	SQL_REQUEST,
+	CONTROL_SYSTEM,
+	READ_MODULES,
+	SLEEP
+} StateTypeDef;
+
+typedef enum{
+	NORMAL,
+	ERROR
+} StatusTypeDef;
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

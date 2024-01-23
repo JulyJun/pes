@@ -2,7 +2,6 @@ C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\가습기 컴퓨터 제어.
 C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\가습기 컴퓨터 제어.exe
 C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\가습기 컴퓨터 제어.pdb
 C:\IotBuild\pes\가습기 컴퓨터 제어\obj\Debug\가습기 컴퓨터 제어.csproj.AssemblyReference.cache
-C:\IotBuild\pes\가습기 컴퓨터 제어\obj\Debug\가습기 컴퓨터 제어.csproj.SuggestedBindingRedirects.cache
 C:\IotBuild\pes\가습기 컴퓨터 제어\obj\Debug\가습기_컴퓨터_제어.Form1.resources
 C:\IotBuild\pes\가습기 컴퓨터 제어\obj\Debug\가습기_컴퓨터_제어.Properties.Resources.resources
 C:\IotBuild\pes\가습기 컴퓨터 제어\obj\Debug\가습기 컴퓨터 제어.csproj.GenerateResource.cache
@@ -52,3 +51,35 @@ C:\pes\가습기 컴퓨터 제어\bin\Debug\System.Numerics.Vectors.xml
 C:\pes\가습기 컴퓨터 제어\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\pes\가습기 컴퓨터 제어\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\pes\가습기 컴퓨터 제어\obj\Debug\가습기 컴퓨터 제어.csproj.CopyComplete
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\BouncyCastle.Cryptography.dll
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\Google.Protobuf.dll
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\K4os.Compression.LZ4.dll
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\K4os.Hash.xxHash.dll
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\MySql.Data.dll
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\System.Buffers.dll
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\System.IO.Pipelines.dll
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\System.Memory.dll
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\System.Numerics.Vectors.dll
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\ZstdSharp.dll
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\BouncyCastle.Cryptography.xml
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\Google.Protobuf.pdb
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\Google.Protobuf.xml
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\K4os.Compression.LZ4.xml
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\K4os.Hash.xxHash.xml
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\MySql.Data.xml
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\System.Buffers.xml
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\System.IO.Pipelines.xml
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\System.Memory.xml
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\System.Numerics.Vectors.xml
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\IotBuild\pes\가습기 컴퓨터 제어\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\IotBuild\pes\가습기 컴퓨터 제어\obj\Debug\가습기 컴퓨터 제어.csproj.CopyComplete

@@ -13,10 +13,12 @@ CREATE TABLE room(
                     room_occupied ENUM('Y', 'N') DEFAULT 'N',
                     outdoor_temp  FLOAT NOT NULL,
                     outdoor_humid FLOAT NOT NULL,
+                    update_time   DATETIME NOT NULL DEFAULT NOW(),
                     PRIMARY KEY(idx)
 );
-desc room;
 
+ALTER TABLE room
+ADD COLUMN update_time DATETIME NOT NULL DEFAULT NOW();
 SELECT *
 FROM room;
 

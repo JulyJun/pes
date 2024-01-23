@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.IO.Ports;
 using static System.Net.Mime.MediaTypeNames;
 using DBCommon;
 using static DBCommon.MysqlDB;
@@ -31,7 +32,7 @@ namespace 가습기_컴퓨터_제어
         private System.Drawing.Image[] images = { Properties.Resources.kommiMad, Properties.Resources.kommiNelm, Properties.Resources.kommiHappy, Properties.Resources.kommiCry };
         private Timer timer;
         private DateTime startTime;
-        private int counter = 0;
+        private int SQLSavecounter = 0;
         //private string Conn = "Server=localhost;Database=HumidTempBoard;Uid=root;Pwd=root;";
         private enum EEmote 
         {
@@ -48,10 +49,15 @@ namespace 가습기_컴퓨터_제어
             timer.Interval = 1000;
             timer.Start();
             timer.Tick += timer1_Tick;
+            this.serialPort1.Open();
+            if (serialPort1.IsOpen)
+            {
+                receiveSerialTBox.Text = $"{DateTime.Now.ToString("HH:mm:ss")} > 연결되었습니다.\n";
+            }
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (counter % (30 * 60) == 0)
+            if (SQLSavecounter % (30 * 60) == 0)
             {
                 // 데이터베이스에 추가함
                 // TODO: 나중에 바꿀것
@@ -61,14 +67,14 @@ namespace 가습기_컴퓨터_제어
                 dl.temperature = Convert.ToSingle("30");
                 dl.humidity = Convert.ToSingle("30");
                 dl.roomOccupied = EYesNo.Y;
-                dl.outdoorTemperature = Convert.ToSingle("10");
-                dl.outdoorHumidity = Convert.ToSingle("10");
+                dl.outdoorTemperature = Convert.ToSingle(temp_g.ToString());
+                dl.outdoorHumidity = Convert.ToSingle(humid_g.ToString());
                 myDb.DataCollections = dl;
                 myDb.InsertData();
-                counter = 0;
+                SQLSavecounter = 0;
             }
 
-            counter++;
+            SQLSavecounter++;
 
             this.Text = title + $" (경과시간: {(DateTime.MinValue + (DateTime.Now - startTime)).ToString("HH:mm:ss")})";
             
@@ -143,7 +149,6 @@ namespace 가습기_컴퓨터_제어
             emoteImg.Image = images[currentImageIndex];
         }
 
-        
         //  *********************************************************************
         //  *                                                                                                                       *
         //  *                                               test Area                                                      *
@@ -215,7 +220,20 @@ namespace 가습기_컴퓨터_제어
 
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
-
+            this.Invoke(new EventHandler(SerialReceived));
+        }
+        private void SerialReceived(object s, EventArgs e)
+        {
+            string receivedData = serialPort1.ReadLine();
+            receiveSerialTBox.Text += $"{DateTime.Now.ToString("HH:mm:ss")} > {receivedData}";
+        }
+        private void sendSerial_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyValue == 13)
+            {
+                serialPort1.Write($"{sendSerialTBox.Text}\n");
+                sendSerialTBox.Text = "";
+            }
         }
     }
 }

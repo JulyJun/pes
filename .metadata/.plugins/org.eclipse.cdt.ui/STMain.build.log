@@ -1,4 +1,4 @@
-15:41:10 **** Incremental Build of configuration Debug for project STMain ****
+16:36:18 **** Incremental Build of configuration Debug for project STMain ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'motionTrack':
@@ -21,11 +21,11 @@ Finished building target: STMain.elf
 arm-none-eabi-size  STMain.elf 
 arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
    text	   data	    bss	    dec	    hex	filename
-  25720	    480	   4080	  30280	   7648	STMain.elf
+  29664	    476	   4212	  34352	   8630	STMain.elf
 Finished building: default.size.stdout
  
 Finished building: STMain.list
  
 
-15:41:11 Build Finished. 0 errors, 3 warnings. (took 1s.26ms)
+16:36:19 Build Finished. 0 errors, 3 warnings. (took 1s.31ms)
 
