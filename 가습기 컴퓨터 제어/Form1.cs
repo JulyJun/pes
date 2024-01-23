@@ -49,7 +49,7 @@ namespace 가습기_컴퓨터_제어
             timer.Interval = 1000;
             timer.Start();
             timer.Tick += timer1_Tick;
-            this.serialPort1.Open();
+            //this.serialPort1.Open();
             if (serialPort1.IsOpen)
             {
                 receiveSerialTBox.Text = $"{DateTime.Now.ToString("HH:mm:ss")} > 연결되었습니다.\n";

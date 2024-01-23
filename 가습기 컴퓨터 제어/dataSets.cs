@@ -134,7 +134,7 @@ namespace APICommon
             DateTime = currentTime;
             currTime = currentTime.ToString("HHmm");
             // 현재시간0100
-            // 베이스 0200
+            // 베이스 전날 23시여야함 여기서만 예외처리
             for(int i = 0; i < _basetimeSelect.Length; i++)
             {
                 numMax = int.Parse(_basetimeSelect[i]) - int.Parse(currTime);
@@ -176,6 +176,7 @@ namespace APICommon
             StreamReader sr = new StreamReader(s);
             return sr.ReadToEnd();
         }
+        // 현재시각 새벽 1시에 2시 베이스 타임일시에 새벽 3시부터 알려줌
         public string GrabNearestTimeValFromAPI(string query, string categoryValue)
         {
             string value = "";
