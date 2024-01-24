@@ -1,31 +1,43 @@
-16:36:18 **** Incremental Build of configuration Debug for project STMain ****
+16:52:12 **** Incremental Build of configuration Debug for project STMain ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:155:19: warning: unused variable 'safeRun' [-Wunused-variable]
+  155 |     StatusTypeDef safeRun;
+      |                   ^~~~~~~
 ../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:413:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  413 |         if(motionDetected == SET)
+../Core/Src/main.c:495:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
+  495 |         if(motionDetected == SET)
       |                           ^~
 ../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:438:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+../Core/Src/main.c:520:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
+  520 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
       |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:438:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+../Core/Src/main.c:520:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  520 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
       |                                             ~~~~^       ~~~~~~
       |                                                 |       |
       |                                                 int     double
       |                                             %0.2f
+../Core/Src/main.c: In function 'SleepMode':
+../Core/Src/main.c:436:1: warning: control reaches end of non-void function [-Wreturn-type]
+  436 | }
+      | ^
+../Core/Src/main.c: In function 'WakeUPMode':
+../Core/Src/main.c:441:1: warning: control reaches end of non-void function [-Wreturn-type]
+  441 | }
+      | ^
 arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: STMain.elf
  
 arm-none-eabi-size  STMain.elf 
 arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
    text	   data	    bss	    dec	    hex	filename
-  29664	    476	   4212	  34352	   8630	STMain.elf
+  25572	    476	   4084	  30132	   75b4	STMain.elf
 Finished building: default.size.stdout
  
 Finished building: STMain.list
  
 
-16:36:19 Build Finished. 0 errors, 3 warnings. (took 1s.31ms)
+16:52:14 Build Finished. 0 errors, 6 warnings. (took 1s.139ms)
 

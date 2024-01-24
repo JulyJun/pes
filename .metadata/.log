@@ -843,3 +843,22 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64 C:\IotBuild\pes\STMain
 
 !ENTRY org.eclipse.cdt.core 1 0 2024-01-23 10:19:09.915
 !MESSAGE Indexed 'STMain' (22 sources, 114 headers) in 6.45 sec: 9,081 declarations; 38,200 references; 2 unresolved inclusions; 36 syntax errors; 188 unresolved names (0.4%)
+!SESSION 2024-01-24 16:39:56.057 -----------------------------------------------
+eclipse.buildId=Version 1.14.0
+java.version=17.0.8.1
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  C:\IotBuild\pes\STMain\.project
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 C:\IotBuild\pes\STMain\.project
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2024-01-24 16:40:28.309
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2024-01-24 16:40:28.317
+!MESSAGE Log4j2 initialized with config file C:\IotBuild\pes\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2024-01-24 16:40:41.387
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2024-01-24 16:40:46.575
+!MESSAGE Indexed 'STMain' (22 sources, 115 headers) in 4.61 sec: 9,126 declarations; 38,271 references; 2 unresolved inclusions; 36 syntax errors; 197 unresolved names (0.41%)

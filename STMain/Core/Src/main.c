@@ -56,7 +56,7 @@ UART_HandleTypeDef huart2;
 char data[BUFFER_SIZE];
 uartData_t com;
 char* command = "com ";
-EState CurrentState;
+
 
 /* USER CODE END PV */
 
@@ -72,11 +72,11 @@ void THtrack(void);
 void relayUnitTest(void);
 bool UserCommands(void);
 
-StatusTypeDef InitSystem(void);
-StatusTypeDef HandShake(void);
-StatusTypeDef Request_SQL(void);
-StatusTypeDef Controller(void);
-StatusTypeDef ReadModules(void);
+StatusTypeDef InitSystem(StateTypeDef*);
+StatusTypeDef HandShake(StateTypeDef*);
+StatusTypeDef Request_SQL(StateTypeDef*);
+StatusTypeDef Controller(StateTypeDef*);
+StatusTypeDef ReadModules(StateTypeDef*);
 StatusTypeDef SleepMode(void);
 StatusTypeDef WakeUPMode(void);
 
@@ -99,6 +99,8 @@ int _write(int file, char *ptr, int len)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+	StateTypeDef runState = INIT;
+
 	memset(com.printingBuffer, 0, UART_BUF_SIZE);
 	com.charSize = 0;
 	com.printingBuffer[com.charSize] = '\0';
@@ -131,7 +133,7 @@ int main(void)
   HAL_UART_Receive_IT(&huart2, (uint8_t *)&com.charHolder, sizeof(com.charHolder));
 
   printf("device init\r\n");
-  InitSystem();
+  InitSystem(&runState);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -151,17 +153,17 @@ int main(void)
 
 #if READY_TO_USE
     StatusTypeDef safeRun;
-    StateTypeDef runState = INIT;
+
     switch (runState)
     {
 		case SQL_REQUEST:
-			Request_SQL();
+			Request_SQL(&runState);
 			break;
 		case CONTROL_SYSTEM:
-			Controller();
+			Controller(&runState);
 			break;
 		case READ_MODULES:
-			ReadModules();
+			ReadModules(&runState);
 			break;
 		case SLEEP:
 
@@ -393,26 +395,35 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	HAL_UART_Receive_IT(&huart2, (uint8_t *)&com.charHolder, sizeof(com.charHolder));
 }
 
-StatusTypeDef InitSystem()
+StatusTypeDef InitSystem(StateTypeDef* runState)
 {
-	HandShake();
-	ReadModules();
-	Request_SQL();
-	Controller();
+	StatusTypeDef a = NORMAL;
+	HandShake(runState);
+	ReadModules(runState);
+	Request_SQL(runState);
+	Controller(runState);
 
-	return StatusTypeDef.NORMAL;
+	return a;
 }
-StatusTypeDef HandShake()
+StatusTypeDef HandShake(StateTypeDef* runState)
 {
-	return StatusTypeDef.NORMAL;
+	StatusTypeDef a = NORMAL;
+	return a;
 }
-StatusTypeDef Request_SQL()
+StatusTypeDef Request_SQL(StateTypeDef* runState)
 {
-	return StatusTypeDef.NORMAL;
+	StatusTypeDef a = NORMAL;
+	return a;
 }
-StatusTypeDef ReadModules()
+StatusTypeDef Controller(StateTypeDef*)
 {
-	return StatusTypeDef.NORMAL;
+	StatusTypeDef a = NORMAL;
+	return a;
+}
+StatusTypeDef ReadModules(StateTypeDef* runState)
+{
+	StatusTypeDef a = NORMAL;
+	return a;
 }
 StatusTypeDef SleepMode()
 {

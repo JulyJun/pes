@@ -1,1356 +1,982 @@
-17:00:41 **** Incremental Build of configuration Debug for project STMain ****
+16:47:43 **** Build of configuration Debug for project STMain ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c:56:4: error: expected '=', ',', ';', 'asm' or '__attribute__' before '.' token
-   56 | com.charSize = 0;
-      |    ^
-../Core/Src/main.c:57:4: error: expected '=', ',', ';', 'asm' or '__attribute__' before '.' token
-   57 | com.printingBuffer[com.charSize] = '\0';
-      |    ^
-../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
-../Core/Src/main.c:336:54: warning: passing argument 2 of 'memset' makes integer from pointer without a cast [-Wint-conversion]
-  336 |                         memset(com.writingBuffer, com.printingBuffer, sizeof(com.printingBuffer)/sizeof(com.printingBuffer[0]));
-      |                                                   ~~~^~~~~~~~~~~~~~~
-      |                                                      |
-      |                                                      char *
-In file included from ../Core/Src/main.c:25:
-C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/string.h:33:26: note: expected 'int' but argument is of type 'char *'
-   33 | void *   memset (void *, int, size_t);
-      |                          ^~~
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:358:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  358 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:383:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  383 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:383:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  383 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
-"make -j8 all" terminated with exit code 2. Build might be incomplete.
-17:01:39 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:90:38: warning: passing argument 2 of 'memset' makes integer from pointer without a cast [-Wint-conversion]
-   90 |         memset(com.writingBuffer, com.printingBuffer, sizeof(com.printingBuffer)/sizeof(com.printingBuffer[0]));
-      |                                   ~~~^~~~~~~~~~~~~~~
-      |                                      |
-      |                                      char *
-In file included from ../Core/Src/main.c:25:
-C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/string.h:33:26: note: expected 'int' but argument is of type 'char *'
-   33 | void *   memset (void *, int, size_t);
-      |                          ^~~
-../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
-../Core/Src/main.c:338:54: warning: passing argument 2 of 'memset' makes integer from pointer without a cast [-Wint-conversion]
-  338 |                         memset(com.writingBuffer, com.printingBuffer, sizeof(com.printingBuffer)/sizeof(com.printingBuffer[0]));
-      |                                                   ~~~^~~~~~~~~~~~~~~
-      |                                                      |
-      |                                                      char *
-In file included from ../Core/Src/main.c:25:
-C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/string.h:33:26: note: expected 'int' but argument is of type 'char *'
-   33 | void *   memset (void *, int, size_t);
-      |                          ^~~
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:360:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  360 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:385:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  385 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:385:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  385 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25212	    476	   4084	  29772	   744c	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:01:47 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-size  STMain.elf 
-   text	   data	    bss	    dec	    hex	filename
-  25212	    476	   4084	  29772	   744c	STMain.elf
-Finished building: default.size.stdout
- 
-17:02:00 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-size  STMain.elf 
-   text	   data	    bss	    dec	    hex	filename
-  25212	    476	   4084	  29772	   744c	STMain.elf
-Finished building: default.size.stdout
- 
-17:04:20 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'HAL_UART_RxCpltCallback':
-../Core/Src/main.c:338:54: warning: passing argument 2 of 'memset' makes integer from pointer without a cast [-Wint-conversion]
-  338 |                         memset(com.writingBuffer, com.printingBuffer, sizeof(com.printingBuffer)/sizeof(com.printingBuffer[0]));
-      |                                                   ~~~^~~~~~~~~~~~~~~
-      |                                                      |
-      |                                                      char *
-In file included from ../Core/Src/main.c:25:
-C:\ST\STM32CubeIDE_1.13.2\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235\tools\bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/include/string.h:33:26: note: expected 'int' but argument is of type 'char *'
-   33 | void *   memset (void *, int, size_t);
-      |                          ^~~
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:360:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  360 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:385:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  385 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:385:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  385 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25216	    476	   4084	  29776	   7450	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:30:45 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_exti.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.d" -MT"Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o"
+arm-none-eabi-gcc -mcpu=cortex-m3 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Core/Startup/startup_stm32f103rbtx.d" -MT"Core/Startup/startup_stm32f103rbtx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Startup/startup_stm32f103rbtx.o" "../Core/Startup/startup_stm32f103rbtx.s"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
 arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
+arm-none-eabi-gcc "../Core/Src/syscalls.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/syscalls.d" -MT"Core/Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/syscalls.o"
+arm-none-eabi-gcc "../Core/Src/sysmem.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/sysmem.d" -MT"Core/Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sysmem.o"
+In file included from ../Core/Src/main.c:20:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+../Core/Src/main.c:59:1: error: unknown type name 'EState'
+   59 | EState CurrentState;
+      | ^~~~~~
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:138:5: warning: implicit declaration of function 'UserCommands' [-Wimplicit-function-declaration]
-  138 |     UserCommands();
-      |     ^~~~~~~~~~~~
+../Core/Src/main.c:158:37: error: invalid type argument of unary '*' (have 'int')
+  158 |                         Request_SQL(*runState);
+      |                                     ^~~~~~~~~
+../Core/Src/main.c:158:25: error: too many arguments to function 'Request_SQL'
+  158 |                         Request_SQL(*runState);
+      |                         ^~~~~~~~~~~
+../Core/Src/main.c:77:15: note: declared here
+   77 | StatusTypeDef Request_SQL(void);
+      |               ^~~~~~~~~~~
+../Core/Src/main.c:161:36: error: invalid type argument of unary '*' (have 'int')
+  161 |                         Controller(*runState);
+      |                                    ^~~~~~~~~
+../Core/Src/main.c:161:25: error: too many arguments to function 'Controller'
+  161 |                         Controller(*runState);
+      |                         ^~~~~~~~~~
+../Core/Src/main.c:78:15: note: declared here
+   78 | StatusTypeDef Controller(void);
+      |               ^~~~~~~~~~
+../Core/Src/main.c:164:37: error: invalid type argument of unary '*' (have 'int')
+  164 |                         ReadModules(*runState);
+      |                                     ^~~~~~~~~
+../Core/Src/main.c:164:25: error: too many arguments to function 'ReadModules'
+  164 |                         ReadModules(*runState);
+      |                         ^~~~~~~~~~~
+../Core/Src/main.c:79:15: note: declared here
+   79 | StatusTypeDef ReadModules(void);
+      |               ^~~~~~~~~~~
+../Core/Src/main.c:153:19: warning: unused variable 'safeRun' [-Wunused-variable]
+  153 |     StatusTypeDef safeRun;
+      |                   ^~~~~~~
 ../Core/Src/main.c: At top level:
-../Core/Src/main.c:359:6: error: conflicting types for 'UserCommands'; have 'bool()'
-  359 | bool UserCommands()
-      |      ^~~~~~~~~~~~
-../Core/Src/main.c:138:5: note: previous implicit declaration of 'UserCommands' with type 'int()'
-  138 |     UserCommands();
-      |     ^~~~~~~~~~~~
+../Core/Src/main.c:406:15: error: conflicting types for 'HandShake'; have 'StatusTypeDef(StateTypeDef *)'
+  406 | StatusTypeDef HandShake(StateTypeDef* runState)
+      |               ^~~~~~~~~
+../Core/Src/main.c:76:15: note: previous declaration of 'HandShake' with type 'StatusTypeDef(void)'
+   76 | StatusTypeDef HandShake(void);
+      |               ^~~~~~~~~
+../Core/Src/main.c:411:15: error: conflicting types for 'Request_SQL'; have 'StatusTypeDef(StateTypeDef *)'
+  411 | StatusTypeDef Request_SQL(StateTypeDef* runState)
+      |               ^~~~~~~~~~~
+../Core/Src/main.c:77:15: note: previous declaration of 'Request_SQL' with type 'StatusTypeDef(void)'
+   77 | StatusTypeDef Request_SQL(void);
+      |               ^~~~~~~~~~~
+../Core/Src/main.c:416:15: error: conflicting types for 'ReadModules'; have 'StatusTypeDef(StateTypeDef *)'
+  416 | StatusTypeDef ReadModules(StateTypeDef* runState)
+      |               ^~~~~~~~~~~
+../Core/Src/main.c:79:15: note: previous declaration of 'ReadModules' with type 'StatusTypeDef(void)'
+   79 | StatusTypeDef ReadModules(void);
+      |               ^~~~~~~~~~~
 ../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:392:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  392 |         if(motionDetected == SET)
+../Core/Src/main.c:488:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
+  488 |         if(motionDetected == SET)
       |                           ^~
 ../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:417:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  417 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+../Core/Src/main.c:513:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
+  513 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
       |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:417:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  417 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+../Core/Src/main.c:513:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  513 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
       |                                             ~~~~^       ~~~~~~
       |                                                 |       |
       |                                                 int     double
       |                                             %0.2f
+../Core/Src/main.c: In function 'SleepMode':
+../Core/Src/main.c:429:1: warning: control reaches end of non-void function [-Wreturn-type]
+  429 | }
+      | ^
+../Core/Src/main.c: In function 'WakeUPMode':
+../Core/Src/main.c:434:1: warning: control reaches end of non-void function [-Wreturn-type]
+  434 | }
+      | ^
+In file included from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
 make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
 make: *** Waiting for unfinished jobs....
+In file included from ../Core/Src/stm32f1xx_it.c:21:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_it.c:21:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_hal_msp.o] Error 1
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_it.o] Error 1
 "make -j8 all" terminated with exit code 2. Build might be incomplete.
-17:31:26 **** Incremental Build of configuration Debug for project STMain ****
+16:48:42 **** Incremental Build of configuration Debug for project STMain ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f1xx.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/system_stm32f1xx.d" -MT"Core/Src/system_stm32f1xx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/system_stm32f1xx.o"
+In file included from ../Core/Src/main.c:20:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+../Core/Src/main.c:59:1: error: unknown type name 'EState'
+   59 | EState CurrentState;
+      | ^~~~~~
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:138:5: warning: implicit declaration of function 'UserCommands' [-Wimplicit-function-declaration]
-  138 |     UserCommands();
-      |     ^~~~~~~~~~~~
-../Core/Src/main.c: At top level:
-../Core/Src/main.c:359:1: error: unknown type name 'bool'
-  359 | bool UserCommands()
-      | ^~~~
-../Core/Src/main.c:26:1: note: 'bool' is defined in header '<stdbool.h>'; did you forget to '#include <stdbool.h>'?
-   25 | #include "string.h"
-  +++ |+#include <stdbool.h>
-   26 | /* USER CODE END Includes */
-../Core/Src/main.c: In function 'UserCommands':
-../Core/Src/main.c:363:24: error: 'false' undeclared (first use in this function)
-  363 |                 return false;
-      |                        ^~~~~
-../Core/Src/main.c:363:24: note: 'false' is defined in header '<stdbool.h>'; did you forget to '#include <stdbool.h>'?
-../Core/Src/main.c:363:24: note: each undeclared identifier is reported only once for each function it appears in
-../Core/Src/main.c:382:16: error: 'true' undeclared (first use in this function)
-  382 |         return true;
-      |                ^~~~
-../Core/Src/main.c:382:16: note: 'true' is defined in header '<stdbool.h>'; did you forget to '#include <stdbool.h>'?
+../Core/Src/main.c:158:37: error: invalid type argument of unary '*' (have 'int')
+  158 |                         Request_SQL(*runState);
+      |                                     ^~~~~~~~~
+../Core/Src/main.c:161:36: error: invalid type argument of unary '*' (have 'int')
+  161 |                         Controller(*runState);
+      |                                    ^~~~~~~~~
+../Core/Src/main.c:164:37: error: invalid type argument of unary '*' (have 'int')
+  164 |                         ReadModules(*runState);
+      |                                     ^~~~~~~~~
+../Core/Src/main.c:153:19: warning: unused variable 'safeRun' [-Wunused-variable]
+  153 |     StatusTypeDef safeRun;
+      |                   ^~~~~~~
+../Core/Src/main.c: In function 'InitSystem':
+../Core/Src/main.c:399:9: error: too few arguments to function 'HandShake'
+  399 |         HandShake();
+      |         ^~~~~~~~~
+../Core/Src/main.c:76:15: note: declared here
+   76 | StatusTypeDef HandShake(StateTypeDef*);
+      |               ^~~~~~~~~
+../Core/Src/main.c:400:9: error: too few arguments to function 'ReadModules'
+  400 |         ReadModules();
+      |         ^~~~~~~~~~~
+../Core/Src/main.c:79:15: note: declared here
+   79 | StatusTypeDef ReadModules(StateTypeDef*);
+      |               ^~~~~~~~~~~
+../Core/Src/main.c:401:9: error: too few arguments to function 'Request_SQL'
+  401 |         Request_SQL();
+      |         ^~~~~~~~~~~
+../Core/Src/main.c:77:15: note: declared here
+   77 | StatusTypeDef Request_SQL(StateTypeDef*);
+      |               ^~~~~~~~~~~
+../Core/Src/main.c:402:9: error: too few arguments to function 'Controller'
+  402 |         Controller();
+      |         ^~~~~~~~~~
+../Core/Src/main.c:78:15: note: declared here
+   78 | StatusTypeDef Controller(StateTypeDef*);
+      |               ^~~~~~~~~~
+../Core/Src/main.c: In function 'SleepMode':
+../Core/Src/main.c:422:1: error: number of arguments doesn't match prototype
+  422 | {
+      | ^
+../Core/Src/main.c:80:15: error: prototype declaration
+   80 | StatusTypeDef SleepMode(StateTypeDef*);
+      |               ^~~~~~~~~
+../Core/Src/main.c: In function 'WakeUPMode':
+../Core/Src/main.c:432:1: error: number of arguments doesn't match prototype
+  432 | {
+      | ^
+../Core/Src/main.c:81:15: error: prototype declaration
+   81 | StatusTypeDef WakeUPMode(StateTypeDef*);
+      |               ^~~~~~~~~~
 ../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:392:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  392 |         if(motionDetected == SET)
+../Core/Src/main.c:488:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
+  488 |         if(motionDetected == SET)
       |                           ^~
 ../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:417:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  417 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+../Core/Src/main.c:513:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
+  513 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
       |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:417:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  417 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+../Core/Src/main.c:513:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  513 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
       |                                             ~~~~^       ~~~~~~
       |                                                 |       |
       |                                                 int     double
       |                                             %0.2f
-../Core/Src/main.c: In function 'UserCommands':
-../Core/Src/main.c:383:1: warning: control reaches end of non-void function [-Wreturn-type]
-  383 | }
+../Core/Src/main.c: In function 'SleepMode':
+../Core/Src/main.c:429:1: warning: control reaches end of non-void function [-Wreturn-type]
+  429 | }
+      | ^
+../Core/Src/main.c: In function 'WakeUPMode':
+../Core/Src/main.c:434:1: warning: control reaches end of non-void function [-Wreturn-type]
+  434 | }
+      | ^
+In file included from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+In file included from ../Core/Src/stm32f1xx_it.c:21:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_it.c:21:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_hal_msp.o] Error 1
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_it.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+16:48:58 **** Incremental Build of configuration Debug for project STMain ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
+In file included from ../Core/Src/main.c:20:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+../Core/Src/main.c:59:1: error: unknown type name 'EState'
+   59 | EState CurrentState;
+      | ^~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:158:37: error: invalid type argument of unary '*' (have 'int')
+  158 |                         Request_SQL(*runState);
+      |                                     ^~~~~~~~~
+../Core/Src/main.c:161:36: error: invalid type argument of unary '*' (have 'int')
+  161 |                         Controller(*runState);
+      |                                    ^~~~~~~~~
+../Core/Src/main.c:164:37: error: invalid type argument of unary '*' (have 'int')
+  164 |                         ReadModules(*runState);
+      |                                     ^~~~~~~~~
+../Core/Src/main.c:153:19: warning: unused variable 'safeRun' [-Wunused-variable]
+  153 |     StatusTypeDef safeRun;
+      |                   ^~~~~~~
+../Core/Src/main.c: In function 'InitSystem':
+../Core/Src/main.c:399:9: error: too few arguments to function 'HandShake'
+  399 |         HandShake();
+      |         ^~~~~~~~~
+../Core/Src/main.c:76:15: note: declared here
+   76 | StatusTypeDef HandShake(StateTypeDef*);
+      |               ^~~~~~~~~
+../Core/Src/main.c:400:9: error: too few arguments to function 'ReadModules'
+  400 |         ReadModules();
+      |         ^~~~~~~~~~~
+../Core/Src/main.c:79:15: note: declared here
+   79 | StatusTypeDef ReadModules(StateTypeDef*);
+      |               ^~~~~~~~~~~
+../Core/Src/main.c:401:9: error: too few arguments to function 'Request_SQL'
+  401 |         Request_SQL();
+      |         ^~~~~~~~~~~
+../Core/Src/main.c:77:15: note: declared here
+   77 | StatusTypeDef Request_SQL(StateTypeDef*);
+      |               ^~~~~~~~~~~
+../Core/Src/main.c:402:9: error: too few arguments to function 'Controller'
+  402 |         Controller();
+      |         ^~~~~~~~~~
+../Core/Src/main.c:78:15: note: declared here
+   78 | StatusTypeDef Controller(StateTypeDef*);
+      |               ^~~~~~~~~~
+../Core/Src/main.c: In function 'motionTrack':
+../Core/Src/main.c:488:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
+  488 |         if(motionDetected == SET)
+      |                           ^~
+../Core/Src/main.c: In function 'gasTrack':
+../Core/Src/main.c:513:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
+  513 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+../Core/Src/main.c:513:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  513 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+      |                                             ~~~~^       ~~~~~~
+      |                                                 |       |
+      |                                                 int     double
+      |                                             %0.2f
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+../Core/Src/main.c: In function 'SleepMode':
+../Core/Src/main.c:429:1: warning: control reaches end of non-void function [-Wreturn-type]
+  429 | }
+      | ^
+../Core/Src/main.c: In function 'WakeUPMode':
+../Core/Src/main.c:434:1: warning: control reaches end of non-void function [-Wreturn-type]
+  434 | }
+      | ^
+In file included from ../Core/Src/stm32f1xx_it.c:21:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_it.c:21:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_hal_msp.o] Error 1
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_it.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+16:49:17 **** Incremental Build of configuration Debug for project STMain ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
+In file included from ../Core/Src/main.c:20:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:158:37: error: invalid type argument of unary '*' (have 'int')
+  158 |                         Request_SQL(*runState);
+      |                                     ^~~~~~~~~
+../Core/Src/main.c:161:36: error: invalid type argument of unary '*' (have 'int')
+  161 |                         Controller(*runState);
+      |                                    ^~~~~~~~~
+../Core/Src/main.c:164:37: error: invalid type argument of unary '*' (have 'int')
+  164 |                         ReadModules(*runState);
+      |                                     ^~~~~~~~~
+../Core/Src/main.c:153:19: warning: unused variable 'safeRun' [-Wunused-variable]
+  153 |     StatusTypeDef safeRun;
+      |                   ^~~~~~~
+../Core/Src/main.c: In function 'InitSystem':
+../Core/Src/main.c:399:9: error: too few arguments to function 'HandShake'
+  399 |         HandShake();
+      |         ^~~~~~~~~
+../Core/Src/main.c:76:15: note: declared here
+   76 | StatusTypeDef HandShake(StateTypeDef*);
+      |               ^~~~~~~~~
+../Core/Src/main.c:400:9: error: too few arguments to function 'ReadModules'
+  400 |         ReadModules();
+      |         ^~~~~~~~~~~
+../Core/Src/main.c:79:15: note: declared here
+   79 | StatusTypeDef ReadModules(StateTypeDef*);
+      |               ^~~~~~~~~~~
+../Core/Src/main.c:401:9: error: too few arguments to function 'Request_SQL'
+  401 |         Request_SQL();
+      |         ^~~~~~~~~~~
+../Core/Src/main.c:77:15: note: declared here
+   77 | StatusTypeDef Request_SQL(StateTypeDef*);
+      |               ^~~~~~~~~~~
+../Core/Src/main.c:402:9: error: too few arguments to function 'Controller'
+  402 |         Controller();
+      |         ^~~~~~~~~~
+../Core/Src/main.c:78:15: note: declared here
+   78 | StatusTypeDef Controller(StateTypeDef*);
+      |               ^~~~~~~~~~
+../Core/Src/main.c: In function 'motionTrack':
+../Core/Src/main.c:488:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
+  488 |         if(motionDetected == SET)
+      |                           ^~
+../Core/Src/main.c: In function 'gasTrack':
+../Core/Src/main.c:513:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
+  513 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:513:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  513 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+      |                                             ~~~~^       ~~~~~~
+      |                                                 |       |
+      |                                                 int     double
+      |                                             %0.2f
+../Core/Src/main.c: In function 'SleepMode':
+../Core/Src/main.c:429:1: warning: control reaches end of non-void function [-Wreturn-type]
+  429 | }
+      | ^
+../Core/Src/main.c: In function 'WakeUPMode':
+../Core/Src/main.c:434:1: warning: control reaches end of non-void function [-Wreturn-type]
+  434 | }
+      | ^
+In file included from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+In file included from ../Core/Src/stm32f1xx_it.c:21:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_it.c:21:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_hal_msp.o] Error 1
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_it.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+16:49:32 **** Incremental Build of configuration Debug for project STMain ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
+In file included from ../Core/Src/main.c:20:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:153:19: warning: unused variable 'safeRun' [-Wunused-variable]
+  153 |     StatusTypeDef safeRun;
+      |                   ^~~~~~~
+../Core/Src/main.c: In function 'InitSystem':
+../Core/Src/main.c:399:9: error: too few arguments to function 'HandShake'
+  399 |         HandShake();
+      |         ^~~~~~~~~
+../Core/Src/main.c:76:15: note: declared here
+   76 | StatusTypeDef HandShake(StateTypeDef*);
+      |               ^~~~~~~~~
+../Core/Src/main.c:400:9: error: too few arguments to function 'ReadModules'
+  400 |         ReadModules();
+      |         ^~~~~~~~~~~
+../Core/Src/main.c:79:15: note: declared here
+   79 | StatusTypeDef ReadModules(StateTypeDef*);
+      |               ^~~~~~~~~~~
+../Core/Src/main.c:401:9: error: too few arguments to function 'Request_SQL'
+  401 |         Request_SQL();
+      |         ^~~~~~~~~~~
+../Core/Src/main.c:77:15: note: declared here
+   77 | StatusTypeDef Request_SQL(StateTypeDef*);
+      |               ^~~~~~~~~~~
+../Core/Src/main.c:402:9: error: too few arguments to function 'Controller'
+  402 |         Controller();
+      |         ^~~~~~~~~~
+../Core/Src/main.c:78:15: note: declared here
+   78 | StatusTypeDef Controller(StateTypeDef*);
+      |               ^~~~~~~~~~
+../Core/Src/main.c: In function 'motionTrack':
+../Core/Src/main.c:488:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
+  488 |         if(motionDetected == SET)
+      |                           ^~
+../Core/Src/main.c: In function 'gasTrack':
+../Core/Src/main.c:513:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
+  513 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:513:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  513 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+      |                                             ~~~~^       ~~~~~~
+      |                                                 |       |
+      |                                                 int     double
+      |                                             %0.2f
+../Core/Src/main.c: In function 'SleepMode':
+../Core/Src/main.c:429:1: warning: control reaches end of non-void function [-Wreturn-type]
+  429 | }
+      | ^
+../Core/Src/main.c: In function 'WakeUPMode':
+../Core/Src/main.c:434:1: warning: control reaches end of non-void function [-Wreturn-type]
+  434 | }
       | ^
 make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+In file included from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+make: *** Waiting for unfinished jobs....
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+In file included from ../Core/Src/stm32f1xx_it.c:21:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_it.c:21:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_hal_msp.o] Error 1
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_it.o] Error 1
 "make -j8 all" terminated with exit code 2. Build might be incomplete.
-17:31:43 **** Incremental Build of configuration Debug for project STMain ****
+16:50:11 **** Incremental Build of configuration Debug for project STMain ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
+In file included from ../Core/Src/main.c:20:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:153:19: warning: unused variable 'safeRun' [-Wunused-variable]
+  153 |     StatusTypeDef safeRun;
+      |                   ^~~~~~~
+../Core/Src/main.c: At top level:
+../Core/Src/main.c:396:15: error: conflicting types for 'InitSystem'; have 'StatusTypeDef(StateTypeDef *)'
+  396 | StatusTypeDef InitSystem(StateTypeDef* runState)
+      |               ^~~~~~~~~~
+../Core/Src/main.c:75:15: note: previous declaration of 'InitSystem' with type 'StatusTypeDef(void)'
+   75 | StatusTypeDef InitSystem(void);
+      |               ^~~~~~~~~~
+../Core/Src/main.c: In function 'motionTrack':
+../Core/Src/main.c:488:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
+  488 |         if(motionDetected == SET)
+      |                           ^~
+../Core/Src/main.c: In function 'gasTrack':
+../Core/Src/main.c:513:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
+  513 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:513:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  513 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+      |                                             ~~~~^       ~~~~~~
+      |                                                 |       |
+      |                                                 int     double
+      |                                             %0.2f
+In file included from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+../Core/Src/main.c: In function 'SleepMode':
+../Core/Src/main.c:429:1: warning: control reaches end of non-void function [-Wreturn-type]
+  429 | }
+      | ^
+../Core/Src/main.c: In function 'WakeUPMode':
+../Core/Src/main.c:434:1: warning: control reaches end of non-void function [-Wreturn-type]
+  434 | }
+      | ^
+In file included from ../Core/Src/stm32f1xx_it.c:21:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_it.c:21:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_hal_msp.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_it.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+16:50:28 **** Incremental Build of configuration Debug for project STMain ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
+In file included from ../Core/Src/main.c:20:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:134:3: error: too few arguments to function 'InitSystem'
+  134 |   InitSystem();
+      |   ^~~~~~~~~~
+../Core/Src/main.c:75:15: note: declared here
+   75 | StatusTypeDef InitSystem(StateTypeDef*);
+      |               ^~~~~~~~~~
+../Core/Src/main.c:153:19: warning: unused variable 'safeRun' [-Wunused-variable]
+  153 |     StatusTypeDef safeRun;
+      |                   ^~~~~~~
+../Core/Src/main.c: In function 'motionTrack':
+../Core/Src/main.c:488:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
+  488 |         if(motionDetected == SET)
+      |                           ^~
+../Core/Src/main.c: In function 'gasTrack':
+../Core/Src/main.c:513:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
+  513 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:513:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  513 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+      |                                             ~~~~^       ~~~~~~
+      |                                                 |       |
+      |                                                 int     double
+      |                                             %0.2f
+In file included from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+../Core/Src/main.c: In function 'SleepMode':
+../Core/Src/main.c:429:1: warning: control reaches end of non-void function [-Wreturn-type]
+  429 | }
+      | ^
+../Core/Src/main.c: In function 'WakeUPMode':
+../Core/Src/main.c:434:1: warning: control reaches end of non-void function [-Wreturn-type]
+  434 | }
+      | ^
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_hal_msp.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+In file included from ../Core/Src/stm32f1xx_it.c:21:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_it.c:21:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_it.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+16:51:03 **** Incremental Build of configuration Debug for project STMain ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
+In file included from ../Core/Src/main.c:20:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:155:19: warning: unused variable 'safeRun' [-Wunused-variable]
+  155 |     StatusTypeDef safeRun;
+      |                   ^~~~~~~
+../Core/Src/main.c: In function 'motionTrack':
+../Core/Src/main.c:490:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
+  490 |         if(motionDetected == SET)
+      |                           ^~
+../Core/Src/main.c: In function 'gasTrack':
+../Core/Src/main.c:515:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
+  515 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:515:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  515 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+      |                                             ~~~~^       ~~~~~~
+      |                                                 |       |
+      |                                                 int     double
+      |                                             %0.2f
+../Core/Src/main.c: In function 'SleepMode':
+../Core/Src/main.c:431:1: warning: control reaches end of non-void function [-Wreturn-type]
+  431 | }
+      | ^
+../Core/Src/main.c: In function 'WakeUPMode':
+../Core/Src/main.c:436:1: warning: control reaches end of non-void function [-Wreturn-type]
+  436 | }
+      | ^
+In file included from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+In file included from ../Core/Src/stm32f1xx_it.c:21:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_it.c:21:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_hal_msp.o] Error 1
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_it.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+16:51:20 **** Incremental Build of configuration Debug for project STMain ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
+In file included from ../Core/Src/main.c:20:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR,
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:155:19: warning: unused variable 'safeRun' [-Wunused-variable]
+  155 |     StatusTypeDef safeRun;
+      |                   ^~~~~~~
+../Core/Src/main.c: In function 'motionTrack':
+../Core/Src/main.c:490:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
+  490 |         if(motionDetected == SET)
+      |                           ^~
+../Core/Src/main.c: In function 'gasTrack':
+../Core/Src/main.c:515:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
+  515 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:515:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  515 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+      |                                             ~~~~^       ~~~~~~
+      |                                                 |       |
+      |                                                 int     double
+      |                                             %0.2f
+../Core/Src/main.c: In function 'SleepMode':
+../Core/Src/main.c:431:1: warning: control reaches end of non-void function [-Wreturn-type]
+  431 | }
+      | ^
+../Core/Src/main.c: In function 'WakeUPMode':
+../Core/Src/main.c:436:1: warning: control reaches end of non-void function [-Wreturn-type]
+  436 | }
+      | ^
+In file included from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR,
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_hal_msp.c:22:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_hal_msp.o] Error 1
+In file included from ../Core/Src/stm32f1xx_it.c:21:
+../Core/Inc/main.h:104:9: error: redeclaration of enumerator 'ERROR'
+  104 |         ERROR,
+      |         ^~~~~
+In file included from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:238,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/stm32f1xx_it.c:21:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:166:3: note: previous definition of 'ERROR' with type 'enum <anonymous>'
+  166 |   ERROR = !SUCCESS
+      |   ^~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/stm32f1xx_it.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+16:51:35 **** Incremental Build of configuration Debug for project STMain ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:155:19: warning: unused variable 'safeRun' [-Wunused-variable]
+  155 |     StatusTypeDef safeRun;
+      |                   ^~~~~~~
+../Core/Src/main.c: In function 'motionTrack':
+../Core/Src/main.c:490:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
+  490 |         if(motionDetected == SET)
+      |                           ^~
+../Core/Src/main.c: In function 'gasTrack':
+../Core/Src/main.c:515:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
+  515 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Core/Src/main.c:515:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  515 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+      |                                             ~~~~^       ~~~~~~
+      |                                                 |       |
+      |                                                 int     double
+      |                                             %0.2f
+../Core/Src/main.c: In function 'SleepMode':
+../Core/Src/main.c:431:1: warning: control reaches end of non-void function [-Wreturn-type]
+  431 | }
+      | ^
+../Core/Src/main.c: In function 'WakeUPMode':
+../Core/Src/main.c:436:1: warning: control reaches end of non-void function [-Wreturn-type]
+  436 | }
+      | ^
+arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+C:/ST/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/main.o: in function `main':
+C:/IotBuild/pes/STMain/Debug/../Core/Src/main.c:163: undefined reference to `Controller'
+C:/ST/STM32CubeIDE_1.13.2/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.11.3.rel1.win32_1.1.100.202309141235/tools/bin/../lib/gcc/arm-none-eabi/11.3.1/../../../../arm-none-eabi/bin/ld.exe: ./Core/Src/main.o: in function `InitSystem':
+C:/IotBuild/pes/STMain/Debug/../Core/Src/main.c:404: undefined reference to `Controller'
+collect2.exe: error: ld returned 1 exit status
+make: *** [makefile:64: STMain.elf] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+16:52:12 **** Incremental Build of configuration Debug for project STMain ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:138:5: warning: implicit declaration of function 'UserCommands' [-Wimplicit-function-declaration]
-  138 |     UserCommands();
-      |     ^~~~~~~~~~~~
-../Core/Src/main.c: At top level:
-../Core/Src/main.c:359:6: error: conflicting types for 'UserCommands'; have 'BOOL()'
-  359 | BOOL UserCommands()
-      |      ^~~~~~~~~~~~
-../Core/Src/main.c:138:5: note: previous implicit declaration of 'UserCommands' with type 'int()'
-  138 |     UserCommands();
-      |     ^~~~~~~~~~~~
+../Core/Src/main.c:155:19: warning: unused variable 'safeRun' [-Wunused-variable]
+  155 |     StatusTypeDef safeRun;
+      |                   ^~~~~~~
 ../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:392:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  392 |         if(motionDetected == SET)
+../Core/Src/main.c:495:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
+  495 |         if(motionDetected == SET)
       |                           ^~
 ../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:417:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  417 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+../Core/Src/main.c:520:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
+  520 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
       |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:417:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  417 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
+../Core/Src/main.c:520:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
+  520 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
       |                                             ~~~~^       ~~~~~~
       |                                                 |       |
       |                                                 int     double
       |                                             %0.2f
-make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
-"make -j8 all" terminated with exit code 2. Build might be incomplete.
-17:32:38 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:393:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  393 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:418:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  418 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:418:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  418 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
+../Core/Src/main.c: In function 'SleepMode':
+../Core/Src/main.c:436:1: warning: control reaches end of non-void function [-Wreturn-type]
+  436 | }
+      | ^
+../Core/Src/main.c: In function 'WakeUPMode':
+../Core/Src/main.c:441:1: warning: control reaches end of non-void function [-Wreturn-type]
+  441 | }
+      | ^
 arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: STMain.elf
  
 arm-none-eabi-size  STMain.elf 
 arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
    text	   data	    bss	    dec	    hex	filename
-  25360	    480	   4080	  29920	   74e0	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:33:43 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'UserCommands':
-../Core/Src/main.c:364:37: error: expected ';' before 'return'
-  364 |                 printf("err 1:\r\n")
-      |                                     ^
-      |                                     ;
-  365 |                 return false;
-      |                 ~~~~~~               
-../Core/Src/main.c:371:45: error: expected ';' before 'return'
-  371 |                         printf("err 2:\r\n")
-      |                                             ^
-      |                                             ;
-  372 |                         return false;
-      |                         ~~~~~~               
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:395:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  395 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:420:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  420 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:420:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  420 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
-"make -j8 all" terminated with exit code 2. Build might be incomplete.
-17:33:54 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:395:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  395 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:420:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  420 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:420:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  420 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25400	    480	   4080	  29960	   7508	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:34:47 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:393:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  393 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:418:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  418 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:418:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  418 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25360	    480	   4080	  29920	   74e0	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:35:44 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:394:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  394 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:419:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  419 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:419:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  419 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25392	    480	   4080	  29952	   7500	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:36:28 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:394:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  394 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:419:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  419 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:419:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  419 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25392	    480	   4080	  29952	   7500	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:36:46 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:394:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  394 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:419:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  419 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:419:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  419 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25392	    480	   4080	  29952	   7500	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:37:27 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:394:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  394 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:419:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  419 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:419:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  419 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25392	    480	   4080	  29952	   7500	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:38:04 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:394:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  394 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:419:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  419 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:419:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  419 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25392	    480	   4080	  29952	   7500	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:38:35 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:394:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  394 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:419:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  419 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:419:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  419 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25392	    480	   4080	  29952	   7500	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:39:24 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:394:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  394 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:419:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  419 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:419:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  419 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25392	    480	   4080	  29952	   7500	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:41:25 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:395:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  395 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:420:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  420 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:420:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  420 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25408	    480	   4080	  29968	   7510	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:42:33 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:395:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  395 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:420:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  420 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:420:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  420 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25408	    480	   4080	  29968	   7510	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:45:02 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c:33:9: error: unknown type name 'bool'
-   33 |         bool trigger;
-      |         ^~~~
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:402:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  402 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:427:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  427 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:427:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  427 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
-"make -j8 all" terminated with exit code 2. Build might be incomplete.
-17:45:34 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
-arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:399:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  399 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:424:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  424 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:424:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  424 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25432	    480	   4080	  29992	   7528	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:47:04 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:399:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  399 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:424:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  424 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:424:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  424 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25480	    480	   4080	  30040	   7558	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:48:07 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:400:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  400 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:425:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  425 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:425:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  425 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25512	    480	   4080	  30072	   7578	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:49:52 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:403:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  403 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:428:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  428 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:428:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  428 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25512	    480	   4080	  30072	   7578	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:51:11 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:405:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  405 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:430:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  430 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:430:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  430 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25520	    480	   4080	  30080	   7580	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:53:06 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:405:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  405 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:430:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  430 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:430:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  430 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25520	    480	   4080	  30080	   7580	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:53:50 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:405:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  405 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:430:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  430 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:430:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  430 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25520	    480	   4080	  30080	   7580	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:54:25 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:405:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  405 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:430:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  430 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:430:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  430 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25520	    480	   4080	  30080	   7580	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:56:15 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:406:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  406 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:431:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  431 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:431:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  431 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25520	    480	   4080	  30080	   7580	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-17:57:01 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:406:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  406 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:431:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  431 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:431:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  431 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25520	    480	   4080	  30080	   7580	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-13:34:23 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:408:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  408 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:433:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  433 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:433:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  433 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25664	    480	   4080	  30224	   7610	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-13:35:49 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:408:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  408 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:433:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  433 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:433:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  433 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25664	    480	   4080	  30224	   7610	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-14:45:41 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-size  STMain.elf 
-   text	   data	    bss	    dec	    hex	filename
-  25664	    480	   4080	  30224	   7610	STMain.elf
-Finished building: default.size.stdout
- 
-15:38:39 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:411:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  411 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:436:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  436 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:436:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  436 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25704	    480	   4080	  30264	   7638	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-15:39:23 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:412:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  412 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:437:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  437 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:437:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  437 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25720	    480	   4080	  30280	   7648	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-15:41:10 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:413:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  413 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:438:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:438:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25720	    480	   4080	  30280	   7648	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-14:44:23 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:413:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  413 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:438:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:438:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25816	    480	   4080	  30376	   76a8	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-14:54:52 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:413:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  413 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:438:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:438:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25816	    480	   4080	  30376	   76a8	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-15:16:59 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
-arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:412:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  412 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:437:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  437 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:437:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  437 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25688	    480	   4080	  30248	   7628	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-15:20:24 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:413:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  413 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:438:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:438:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25772	    480	   4080	  30332	   767c	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-15:20:52 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:413:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  413 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:438:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:438:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25764	    480	   4080	  30324	   7674	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-15:21:08 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-size  STMain.elf 
-   text	   data	    bss	    dec	    hex	filename
-  25764	    480	   4080	  30324	   7674	STMain.elf
-Finished building: default.size.stdout
- 
-15:36:25 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
-arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:413:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  413 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:438:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:438:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  29672	    476	   4212	  34360	   8638	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-15:37:05 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
-arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:413:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  413 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:438:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:438:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  25688	    480	   4080	  30248	   7628	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-15:38:49 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/stm32f1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_hal_msp.d" -MT"Core/Src/stm32f1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_hal_msp.o"
-arm-none-eabi-gcc "../Core/Src/stm32f1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/stm32f1xx_it.d" -MT"Core/Src/stm32f1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f1xx_it.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:413:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  413 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:438:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:438:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  29672	    476	   4212	  34360	   8638	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-16:35:51 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:413:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  413 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:438:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:438:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  29664	    476	   4212	  34352	   8630	STMain.elf
-Finished building: default.size.stdout
- 
-Finished building: STMain.list
- 
-16:36:18 **** Incremental Build of configuration Debug for project STMain ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'motionTrack':
-../Core/Src/main.c:413:27: warning: comparison between 'GPIO_PinState' and 'enum <anonymous>' [-Wenum-compare]
-  413 |         if(motionDetected == SET)
-      |                           ^~
-../Core/Src/main.c: In function 'gasTrack':
-../Core/Src/main.c:438:25: warning: '0' flag ignored with precision and '%d' gnu_printf format [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:438:49: warning: format '%d' expects argument of type 'int', but argument 3 has type 'double' [-Wformat=]
-  438 |           sprintf(data, "current gas value: %0.2d\r\n", gasVal);
-      |                                             ~~~~^       ~~~~~~
-      |                                                 |       |
-      |                                                 int     double
-      |                                             %0.2f
-arm-none-eabi-gcc -o "STMain.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\IotBuild\pes\STMain\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STMain.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: STMain.elf
- 
-arm-none-eabi-size  STMain.elf 
-arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
-   text	   data	    bss	    dec	    hex	filename
-  29664	    476	   4212	  34352	   8630	STMain.elf
+  25572	    476	   4084	  30132	   75b4	STMain.elf
 Finished building: default.size.stdout
  
 Finished building: STMain.list

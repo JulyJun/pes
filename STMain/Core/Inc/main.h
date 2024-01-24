@@ -101,7 +101,6 @@ typedef enum{
 
 typedef enum{
 	NORMAL,
-	ERROR
 } StatusTypeDef;
 /* USER CODE END Private defines */
 
