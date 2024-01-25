@@ -76,7 +76,7 @@ void Error_Handler(void);
 /* USER CODE BEGIN Private defines */
 #define BUFFER_SIZE 128
 #define UART_BUF_SIZE 1024
-#define TWELVEBITS 8192
+#define TWELVEBITS 4096
 #define FOURTEENBITS 16384
 #define ADC_BIT_RESOLUTION TWELVEBITS
 #define HIGH GPIO_PIN_SET

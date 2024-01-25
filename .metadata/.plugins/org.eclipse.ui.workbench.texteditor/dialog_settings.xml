@@ -9,6 +9,7 @@
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
 			<item value="GetTempHumidValue"/>
+			<item value="TWELVEBITS"/>
 			<item value="usercommand"/>
 			<item value="ADC_BIT_RESOLUTION"/>
 			<item value="SQL_WRITE_REQUEST"/>
@@ -22,7 +23,6 @@
 			<item value="Controller"/>
 			<item value="relayUnitTest"/>
 			<item value="    relayUnitTest();"/>
-			<item value="MODULETEST"/>
 		</list>
 		<list key="replacehistory">
 		</list>

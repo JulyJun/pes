@@ -8,7 +8,7 @@
 ../Core/Src/main.c:458:15:InitSystem	24	static
 ../Core/Src/main.c:476:15:HandShake	8	static
 ../Core/Src/main.c:489:15:Request_SQL_Read	72	static
-../Core/Src/main.c:544:15:Request_SQL_Write	32	static
+../Core/Src/main.c:544:15:Request_SQL_Write	48	static
 ../Core/Src/main.c:551:15:Controller	16	static
 ../Core/Src/main.c:562:15:ReadModules	16	static
 ../Core/Src/main.c:580:15:SleepMode	16	static

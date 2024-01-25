@@ -1,4 +1,4 @@
-17:36:38 **** Incremental Build of configuration Debug for project STMain ****
+18:19:58 **** Incremental Build of configuration Debug for project STMain ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'Request_SQL_Read':
@@ -35,11 +35,11 @@ Finished building target: STMain.elf
 arm-none-eabi-size  STMain.elf 
 arm-none-eabi-objdump -h -S STMain.elf  > "STMain.list"
    text	   data	    bss	    dec	    hex	filename
-  35956	    476	   4108	  40540	   9e5c	STMain.elf
+  35988	    476	   4108	  40572	   9e7c	STMain.elf
 Finished building: default.size.stdout
  
 Finished building: STMain.list
  
 
-17:36:39 Build Finished. 0 errors, 7 warnings. (took 1s.80ms)
+18:19:59 Build Finished. 0 errors, 7 warnings. (took 1s.134ms)
 
