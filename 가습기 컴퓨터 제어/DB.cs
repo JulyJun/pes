@@ -154,7 +154,14 @@ namespace DBCommon
                 connQuery = $"Server={ServerName};Database={DBSchema};Uid={UserID};Pwd={UserPW};";
             }
             conn = new MySqlConnection(connQuery);
-            conn.Open();
+            try
+            {
+                conn.Open ();
+            }
+            catch(MySqlException ex)
+            {
+                Console.WriteLine($"SQL 연결 예외 발생: {ex.Message}");
+            }
             cmd = new MySqlCommand();
             if(conn.State == ConnectionState.Open)
             {
@@ -164,6 +171,14 @@ namespace DBCommon
             return false;
         }
 
+        public bool DisconnSQL()
+        {
+            if(conn.State == ConnectionState.Open)
+            {
+                conn.Close();
+            }
+            return true;
+        }
         //
         //  return dataColumn[] string
         //

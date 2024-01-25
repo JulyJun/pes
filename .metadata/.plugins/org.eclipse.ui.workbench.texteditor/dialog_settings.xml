@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Controller"/>
+		<item key="selection" value="GetTempHumidValue"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="Controller"/>
-			<item value="HandShake"/>
+			<item value="GetTempHumidValue"/>
+			<item value="usercommand"/>
+			<item value="ADC_BIT_RESOLUTION"/>
+			<item value="SQL_WRITE_REQUEST"/>
+			<item value="CONTROL_SYSTEM"/>
+			<item value="trigger"/>
+			<item value="device init"/>
+			<item value="writingBuffer"/>
 			<item value="InitSystem"/>
+			<item value="HandShake"/>
+			<item value="Request_SQL_Read"/>
+			<item value="Controller"/>
 			<item value="relayUnitTest"/>
 			<item value="    relayUnitTest();"/>
 			<item value="MODULETEST"/>
-			<item value="COMMANDINIT"/>
-			<item value="HAL_UART_Receive_IT"/>
-			<item value="UART_BUF_SIZE"/>
-			<item value="com"/>
-			<item value="uartData_t"/>
-			<item value="printf"/>
-			<item value="collecting"/>
-			<item value="command"/>
-			<item value="printing_buffer"/>
 		</list>
 		<list key="replacehistory">
 		</list>

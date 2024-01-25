@@ -34,6 +34,14 @@ typedef struct{
 	char writingBuffer[UART_BUF_SIZE];
 } uartData_t;
 
+typedef struct{
+	float co2;
+	float gas;
+	float temperature_in;
+	float humidity_in;
+	float temperature_out;
+	float humidity_out;
+} dataHolder_t;
 
 /* USER CODE END PTD */
 
@@ -55,6 +63,7 @@ UART_HandleTypeDef huart2;
 /* USER CODE BEGIN PV */
 char data[BUFFER_SIZE];
 uartData_t com;
+dataHolder_t DataReader_g = {0,};
 char* command = "com ";
 
 
@@ -70,11 +79,13 @@ void motiontrack(void);
 void gasTrack(void);
 void THtrack(void);
 void relayUnitTest(void);
-bool UserCommands(void);
+void GetGasValue(void);
+void GetTempHumidValue(void);
 
 StatusTypeDef InitSystem(StateTypeDef*);
-StatusTypeDef HandShake(StateTypeDef*);
-StatusTypeDef Request_SQL(StateTypeDef*);
+StatusTypeDef HandShake();
+StatusTypeDef Request_SQL_Read(StateTypeDef*);
+StatusTypeDef Request_SQL_Write(StateTypeDef*);
 StatusTypeDef Controller(StateTypeDef*);
 StatusTypeDef ReadModules(StateTypeDef*);
 StatusTypeDef SleepMode(void);
@@ -134,6 +145,7 @@ int main(void)
 
   printf("device init\r\n");
   InitSystem(&runState);
+  printf("init\r\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -156,17 +168,25 @@ int main(void)
 
     switch (runState)
     {
-		case SQL_REQUEST:
-			Request_SQL(&runState);
+		case SQL_WRITE_REQUEST:
+			safeRun = Request_SQL_Write(&runState);
+			//printf("enter sqlWrite()\r\n");
+			assert(safeRun == OK);
 			break;
 		case CONTROL_SYSTEM:
-			Controller(&runState);
+			safeRun = Controller(&runState);
+			//printf("enter Controller()\r\n");
+			assert(safeRun == OK);
 			break;
 		case READ_MODULES:
-			ReadModules(&runState);
+			safeRun = ReadModules(&runState);
+			//printf("enter ReadModules()\r\n");
+			assert(safeRun == OK);
 			break;
 		case SLEEP:
-
+			safeRun = SleepMode();
+			//printf("enter SleepMode()\r\n");
+			assert(safeRun == OK);
 			break;
 		default:
 			// should not enter
@@ -338,6 +358,7 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
@@ -346,6 +367,40 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, RELAY_Pin|RELAY_SWITCH_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : PC13 PC0 PC1 PC2
+                           PC3 PC4 PC5 PC6
+                           PC7 PC8 PC9 PC10
+                           PC11 PC12 */
+  GPIO_InitStruct.Pin = GPIO_PIN_13|GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2
+                          |GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6
+                          |GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10
+                          |GPIO_PIN_11|GPIO_PIN_12;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PD0 PD1 PD2 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PA5 PA6 PA7 PA8
+                           PA10 PA11 PA12 PA15 */
+  GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8
+                          |GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_15;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PB0 PB1 PB2 PB10
+                           PB11 PB12 PB13 PB14
+                           PB15 PB3 PB4 PB5
+                           PB6 PB7 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_10
+                          |GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14
+                          |GPIO_PIN_15|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5
+                          |GPIO_PIN_6|GPIO_PIN_7;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PIR_Pin */
   GPIO_InitStruct.Pin = PIR_Pin;
@@ -361,6 +416,9 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  /*Configure peripheral I/O remapping */
+  __HAL_AFIO_REMAP_PD01_ENABLE();
+
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
 }
@@ -372,6 +430,7 @@ static void MX_GPIO_Init(void)
  * */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
+	WakeUPMode();
 	if(huart->Instance == USART2)
 	{
 		if(com.charHolder == '\n')
@@ -386,6 +445,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 		}
 		else
 		{
+			WakeUPMode();
 			com.printingBuffer[com.charSize] = com.charHolder;
 			com.printingBuffer[com.charSize + 1] = '\0';
 			// printf("%c", com.charHolder);
@@ -397,36 +457,129 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
 StatusTypeDef InitSystem(StateTypeDef* runState)
 {
-	StatusTypeDef a = NORMAL;
-	HandShake(runState);
-	ReadModules(runState);
-	Request_SQL(runState);
-	Controller(runState);
+	StatusTypeDef status;
+	status = HandShake();
+	assert(status == OK);
 
-	return a;
+	status = ReadModules(runState);
+	assert(status == OK);
+
+	status = Request_SQL_Read(runState);
+	assert(status == OK);
+
+	status = Controller(runState);
+	assert(status == OK);
+
+	*runState = SQL_WRITE_REQUEST;
+	return OK;
 }
-StatusTypeDef HandShake(StateTypeDef* runState)
+StatusTypeDef HandShake()
 {
-	StatusTypeDef a = NORMAL;
-	return a;
+	printf("Hello PC\r\n");
+	HAL_Delay(5000);
+	while(strncmp(com.writingBuffer, "Hello ST\r", sizeof("Hello ST\r") - 1) != 0)
+	{
+		printf("Hello PC\r\n");
+		HAL_Delay(5000);
+	}
+	printf("HandShake Successful\r\n");
+
+	return OK;
 }
-StatusTypeDef Request_SQL(StateTypeDef* runState)
+StatusTypeDef Request_SQL_Read(StateTypeDef* runState)
 {
-	StatusTypeDef a = NORMAL;
-	return a;
+	char value[30] = {0,};
+	char* ptr;
+	int humidPt = 0;
+	printf("Request SQL Data\r\n");
+#if 0
+	while(strncmp(com.writingBuffer, "end\r", sizeof("end\r") - 1) != 0)
+	{
+		if(strncmp(com.writingBuffer, "TEMP: ", sizeof("TEMP: ") - 1) == 0)
+		{
+			for(int i = 0; i < com.charSize; i++)
+			{
+				if(strncmp(com.writingBuffer + i, "HUMID: ", sizeof("HUMID: ")) == 0)
+				{
+					humidPt = i;
+					break;
+				}
+			}
+			ptr = com.writingBuffer + sizeof("TEMP: ") - 1;
+			strncpy(value, ptr, humidPt - sizeof("TEMP: ") + 1);
+			value[humidPt - sizeof("TEMP: ") + 1] = '\0';
+
+			ptr = com.writingBuffer + humidPt - sizeof("TEMP: ") + 1;
+			DataReader_g.temperature_out = strtod(value, NULL);
+			printf("temp: %.2f\r\n", DataReader_g.temperature_out);
+		}
+		printf("trapped\r\n");
+		HAL_Delay(2000);
+	}
+#endif
+	printf("Req TEMP\r\n");
+	while(com.trigger == false)
+	{
+		// loop till trigger on
+		HAL_Delay(50);
+	}
+	com.trigger = false;
+	DataReader_g.temperature_out = strtod(com.writingBuffer, NULL);
+	printf("temp in: %f, tmp out: %f\r\n", DataReader_g.temperature_in, DataReader_g.temperature_out);
+
+	printf("Req HUMID\r\n");
+	while(com.trigger == false)
+	{
+		// loop till trigger on
+		HAL_Delay(50);
+	}
+	com.trigger = false;
+	DataReader_g.humidity_out = strtod(com.writingBuffer, NULL);
+	printf("humi in: %f, humi out: %f\r\n", DataReader_g.humidity_in, DataReader_g.humidity_out);
+	printf("end read sql\r\n");
+
+	*runState = CONTROL_SYSTEM;
+	return OK;
 }
-StatusTypeDef Controller(StateTypeDef*)
+StatusTypeDef Request_SQL_Write(StateTypeDef* runState)
 {
-	StatusTypeDef a = NORMAL;
-	return a;
+	printf("Req Write << temp: %.2f, humidity: %.2f, gas: %.2f\r\n", DataReader_g.temperature_in, DataReader_g.humidity_in, DataReader_g.gas);
+	*runState = SLEEP;
+	*runState = READ_MODULES;
+	return OK;
+}
+StatusTypeDef Controller(StateTypeDef* runState)
+{
+	HAL_GPIO_TogglePin(RELAY_GPIO_Port, RELAY_Pin);
+	HAL_GPIO_TogglePin(RELAY_SWITCH_GPIO_Port, RELAY_SWITCH_Pin);
+	*runState = READ_MODULES;
+	*runState = SQL_WRITE_REQUEST;
+
+	printf("END OF CONTROL\r\n");
+	HAL_Delay(25000);
+	return OK;
 }
 StatusTypeDef ReadModules(StateTypeDef* runState)
 {
-	StatusTypeDef a = NORMAL;
-	return a;
+	if(*runState == INIT)
+	{
+		GetGasValue();
+		GetTempHumidValue();
+		printf("read modules");
+	}
+	else
+	{
+		*runState = SQL_WRITE_REQUEST;
+		*runState = CONTROL_SYSTEM;
+	}
+
+	return OK;
 }
+
+// reference: https://wiki.st.com/stm32mcu/wiki/Getting_started_with_PWR
 StatusTypeDef SleepMode()
 {
+	printf("Zzz\r\n");
 	// SUSPEND SYSTICK
 	HAL_SuspendTick();
 	// ENABLE POWER PERIPHERAL
@@ -438,51 +591,8 @@ StatusTypeDef SleepMode()
 StatusTypeDef WakeUPMode()
 {
 	HAL_ResumeTick();
-}
 
-bool UserCommands()
-{
-	if(com.trigger == false)
-	{
-		return false;
-	}
-	if(com.charSize < COMMAND_MIN_LENGTH)
-	{
-		return false;
-	}
-
-	size_t index = 0;
-	while(*command != '\0')
-	{
-		if(com.writingBuffer[index] != *command)
-		{
-			printf("COMMANDINIT: %d", COMMANDINIT);
-			printf("command: %c\r\nbuffer: %c\r\n", *command, com.writingBuffer[index]);
-			com.trigger = false;
-			return false;
-		}
-		++command;
-		++index;
-	}
-	printf("str: %c\r\n", com.writingBuffer[COMMANDINIT]);
-	if(com.writingBuffer[COMMANDINIT] == 'd')
-	{
-		//TODO: do sth
-	}
-	else if(com.writingBuffer[COMMANDINIT] == 'a')
-	{
-		//TODO: do sth
-		HAL_GPIO_TogglePin(RELAY_SWITCH_GPIO_Port, RELAY_SWITCH_Pin);
-		printf("command init\r\n");
-		printf("*************\r\n");
-		printf(com.writingBuffer);
-		printf("\r\n");
-		printf("*************\r\n");
-		HAL_Delay(1000);
-	}
-
-	com.trigger = false;
-	return true;
+	return OK;
 }
 
 /*
@@ -502,6 +612,32 @@ void motionTrack(void)
 	}
 }
 
+// read data from gas
+// @note: no params but should initialize DataHolder_t globally
+void GetGasValue()
+{
+	HAL_ADC_Start(&hadc1);
+	HAL_ADC_PollForConversion(&hadc1, 10);
+	float gas = HAL_ADC_GetValue(&hadc1);
+	DataReader_g.gas = (gas / ADC_BIT_RESOLUTION * 1024);
+}
+void GetTempHumidValue()
+{
+	HAL_ADC_Start(&hadc1);
+	HAL_ADC_PollForConversion(&hadc1, 10);
+	float temp = HAL_ADC_GetValue(&hadc1);
+
+	HAL_ADC_Start(&hadc1);
+	HAL_ADC_PollForConversion(&hadc1, 10);
+	float hud = HAL_ADC_GetValue(&hadc1);
+
+	DataReader_g.temperature_in = -66.875 + 218.75 * (temp / ADC_BIT_RESOLUTION);
+	DataReader_g.humidity_in = -12.5 + 125 * (hud / ADC_BIT_RESOLUTION);
+}
+//TODO: should attach other modules
+// void...
+
+/**********************************************test*************************************************************/
 /*
  * @note STM32 is 12bits data transfer and Arduino is 10bits
  * 5v / 1024

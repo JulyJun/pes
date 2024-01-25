@@ -31,9 +31,10 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "stdio.h"
-#include "string.h"
-#include "assert.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <assert.h>
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -75,7 +76,7 @@ void Error_Handler(void);
 /* USER CODE BEGIN Private defines */
 #define BUFFER_SIZE 128
 #define UART_BUF_SIZE 1024
-#define TWELVEBITS 4096
+#define TWELVEBITS 8192
 #define FOURTEENBITS 16384
 #define ADC_BIT_RESOLUTION TWELVEBITS
 #define HIGH GPIO_PIN_SET
@@ -93,7 +94,8 @@ typedef enum{
 
 typedef enum{
 	INIT,
-	SQL_REQUEST,
+	SQL_WRITE_REQUEST,
+	SQL_READ_REQUEST,
 	CONTROL_SYSTEM,
 	READ_MODULES,
 	SLEEP
@@ -101,6 +103,8 @@ typedef enum{
 
 typedef enum{
 	NORMAL,
+	OK,
+	ABNORMAL
 } StatusTypeDef;
 /* USER CODE END Private defines */
 

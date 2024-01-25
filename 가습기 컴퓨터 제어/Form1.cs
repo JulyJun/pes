@@ -15,6 +15,7 @@ using static System.Net.Mime.MediaTypeNames;
 using DBCommon;
 using static DBCommon.MysqlDB;
 using pAlgorithms;
+using System.Text.RegularExpressions;
 
 namespace 가습기_컴퓨터_제어
 {
@@ -25,7 +26,10 @@ namespace 가습기_컴퓨터_제어
         private MysqlDB myDb;
         private Algorithms calc = new Algorithms();
         private string temp_g;
+        private string temp_gIn;
         private string humid_g;
+        private string humid_gIn;
+        private string gas_g;
         private string dataQuery;
         private string title;
         private int currentImageIndex = 0;
@@ -49,11 +53,7 @@ namespace 가습기_컴퓨터_제어
             timer.Interval = 1000;
             timer.Start();
             timer.Tick += timer1_Tick;
-            //this.serialPort1.Open();
-            if (serialPort1.IsOpen)
-            {
-                receiveSerialTBox.Text = $"{DateTime.Now.ToString("HH:mm:ss")} > 연결되었습니다.\n";
-            }
+            
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -63,9 +63,18 @@ namespace 가습기_컴퓨터_제어
                 // TODO: 나중에 바꿀것
                 DataList dl = new DataList();
                 dl.co2 = Convert.ToSingle("30");
-                dl.gas = Convert.ToSingle("30");
-                dl.temperature = Convert.ToSingle("30");
-                dl.humidity = Convert.ToSingle("30");
+                if(temp_gIn == null && humid_gIn == null && gas_g == null)
+                {
+                    dl.gas = Convert.ToSingle("30");
+                    dl.temperature = Convert.ToSingle("-30");
+                    dl.humidity = Convert.ToSingle("-30");
+                }
+                else
+                {
+                    dl.temperature = Convert.ToSingle(temp_gIn.ToString());
+                    dl.humidity = Convert.ToSingle(humid_gIn.ToString());
+                }
+                
                 dl.roomOccupied = EYesNo.Y;
                 dl.outdoorTemperature = Convert.ToSingle(temp_g.ToString());
                 dl.outdoorHumidity = Convert.ToSingle(humid_g.ToString());
@@ -83,8 +92,61 @@ namespace 가습기_컴퓨터_제어
         private void Form1_Load(object sender, EventArgs e)
         {
             InitializeValue();
+            this.serialPort1.Open();
+            if (serialPort1.IsOpen)
+            {
+                receiveSerialTBox.Text = $"{DateTime.Now.ToString("HH:mm:ss")} > 연결되었습니다.\n";
+            }
         }
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.serialPort1.Close();
+            myDb.DisconnSQL();
+        }
+        private void SerialReceived(object s, EventArgs e)
+        {
+            string receivedData = serialPort1.ReadLine();
 
+            // HandShake
+            if (receivedData.Contains("Hello PC"))
+            {
+                serialPort1.Write("Hello ST\r\n");
+            }
+            // get data request
+            if(receivedData.Contains("Req TEMP"))
+            {
+                serialPort1.Write($"{temp_g}\r\n");
+            }
+            if(receivedData.Contains("Req HUMID"))
+            {
+                serialPort1.Write($"{humid_g}\r\n");
+            }
+            //
+            if(receivedData.Length >= "Req Write".Length && receivedData.Substring(0, "Req Write".Length).Contains("Req Write"))
+            {
+                string temp_in = @"temp: (\d+)";
+                string humid_in = @"humidity: (\d+)";
+                string gas = @"gas: (\d+)";
+                Match tempMatch = Regex.Match(receivedData, temp_in);
+                Match humidMatch = Regex.Match(receivedData, humid_in);
+                Match gasMatch = Regex.Match(receivedData, gas);
+                if(tempMatch.Success && humidMatch.Success && gasMatch.Success)
+                {
+                    temp_gIn = tempMatch.Groups[1].Value;
+                    humid_gIn = humidMatch.Groups[1].Value;
+                    gas_g = gasMatch.Groups[1].Value;
+                    textBox2.Text = $"{humid_gIn}%";
+                    textBox4.Text = $"{temp_gIn}°C";
+                    richTextBox1.Text = "데이터 삽입";
+                }
+                else
+                {
+                    richTextBox1.Text = "데이터 없음";
+                }
+            }
+
+            receiveSerialTBox.AppendText($"{DateTime.Now.ToString("HH:mm:ss")} > {receivedData}");
+        }
         private void InitializeValue()
         {
             const int dataLength = 120;
@@ -222,11 +284,7 @@ namespace 가습기_컴퓨터_제어
         {
             this.Invoke(new EventHandler(SerialReceived));
         }
-        private void SerialReceived(object s, EventArgs e)
-        {
-            string receivedData = serialPort1.ReadLine();
-            receiveSerialTBox.Text += $"{DateTime.Now.ToString("HH:mm:ss")} > {receivedData}";
-        }
+        
         private void sendSerial_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyValue == 13)
@@ -235,5 +293,7 @@ namespace 가습기_컴퓨터_제어
                 sendSerialTBox.Text = "";
             }
         }
+
+        
     }
 }

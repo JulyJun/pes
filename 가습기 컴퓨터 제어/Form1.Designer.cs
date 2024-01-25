@@ -780,6 +780,7 @@
             this.MinimumSize = new System.Drawing.Size(1170, 880);
             this.Name = "Form1";
             this.Text = "가습기 제어 프로그램";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControls.ResumeLayout(false);
             this.tab1.ResumeLayout(false);
