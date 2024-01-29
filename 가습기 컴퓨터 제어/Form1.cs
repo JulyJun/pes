@@ -34,9 +34,11 @@ namespace 가습기_컴퓨터_제어
         private string title;
         private int currentImageIndex = 0;
         private System.Drawing.Image[] images = { Properties.Resources.kommiMad, Properties.Resources.kommiNelm, Properties.Resources.kommiHappy, Properties.Resources.kommiCry };
-        private Timer timer;
+        private Timer DBtimer;
+        private Timer RealtimeChartsTimer;
         private DateTime startTime;
         private int SQLSavecounter = 0;
+        private int chart2Counter = 0;
         //private string Conn = "Server=localhost;Database=HumidTempBoard;Uid=root;Pwd=root;";
         private enum EEmote 
         {
@@ -48,12 +50,16 @@ namespace 가습기_컴퓨터_제어
         public Form1()
         {
             InitializeComponent();
-            timer = new Timer();
+            InitializeValue();
+            DBtimer = new Timer();
+            RealtimeChartsTimer = new Timer();
             //timer.Interval = 108000000;
-            timer.Interval = 1000;
-            timer.Start();
-            timer.Tick += timer1_Tick;
-            
+            DBtimer.Interval = 1000;
+            RealtimeChartsTimer.Interval= 120000;
+            DBtimer.Start();
+            RealtimeChartsTimer.Start();
+            DBtimer.Tick += timer1_Tick;
+            RealtimeChartsTimer.Tick += timer2_Tick;
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -85,13 +91,11 @@ namespace 가습기_컴퓨터_제어
 
             SQLSavecounter++;
 
-            this.Text = title + $" (경과시간: {(DateTime.MinValue + (DateTime.Now - startTime)).ToString("HH:mm:ss")})";
-            
+            this.Text = title + $" (경과시간: {(DateTime.MinValue + (DateTime.Now - startTime)).ToString("HH:mm:ss")})";            
         }
-
+        
         private void Form1_Load(object sender, EventArgs e)
-        {
-            InitializeValue();
+        {            
             this.serialPort1.Open();
             if (serialPort1.IsOpen)
             {
@@ -147,6 +151,21 @@ namespace 가습기_컴퓨터_제어
 
             receiveSerialTBox.AppendText($"{DateTime.Now.ToString("HH:mm:ss")} > {receivedData}");
         }
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            chart2.Series[0].Points.Add(chart2Counter, Convert.ToSingle(humid_g));
+            chart2.Series[1].Points.Add(chart2Counter, Convert.ToSingle(temp_g));
+            chart2.Series[2].Points.Add(chart2Counter, Convert.ToSingle(humid_gIn));
+            chart2.Series[3].Points.Add(chart2Counter, Convert.ToSingle(temp_gIn));
+            if (chart2.Series[0].Points.Count > 30)
+            {
+                chart2.Series.RemoveAt(0);
+            }
+
+            chart2.ChartAreas[0].AxisX.Maximum = 100;
+            chart2.ChartAreas[0].AxisX.Minimum = 0;
+            chart2Counter++;
+        }
         private void InitializeValue()
         {
             const int dataLength = 120;
@@ -167,6 +186,10 @@ namespace 가습기_컴퓨터_제어
 
             chart2.Series.Clear();
             chart2.ChartAreas.Clear();
+            for(int i = 0; i < chart2.Series.Count; i++)
+            {
+                chart2.Series[i].Enabled = false;
+            }
 
             series.ChartType = SeriesChartType.Spline;
             series.IsValueShownAsLabel = true;
@@ -186,6 +209,7 @@ namespace 가습기_컴퓨터_제어
             chartArea.AxisX.ScaleView.Zoom(0, 30);
             chartArea.AxisY.ScaleView.Zoom(-1, 2);
 
+            dataSets.GetUrl();
             temp_g = dataSets.GrabNearestTimeValFromAPI(dataQuery, WeatherApiCommon.EForcastCode.TMP.ToString());
             humid_g = dataSets.GrabNearestTimeValFromAPI(dataQuery, WeatherApiCommon.EForcastCode.REH.ToString());
             textBox1.Text = humid_g  + "%";
@@ -196,6 +220,8 @@ namespace 가습기_컴퓨터_제어
             textBox6.Text = rainCheck > 0 ? "비 예상" : "비 예보없음";
             dateTime_label.Text = $"{dataSets.Date.Substring(0, 4)}년 {dataSets.Date.Substring(4, 2)}월 {dataSets.Date.Substring(6,2)}일 { dataSets.DateTime.DayOfWeek.ToString() }" ;
             groupBox2.Text = $"{dataSets.ForcastTime}시 날씨요약";
+            AvgHumYest_Box.Text = myDb.humidAvg().ToString();
+            AvgTempYest_Box.Text = myDb.tempAvg().ToString();
         }
 
         private void UpdateWeather()
@@ -294,6 +320,52 @@ namespace 가습기_컴퓨터_제어
             }
         }
 
-        
+        private void checkBox1_CheckStateChanged(object sender, EventArgs e)
+        {
+            if(checkBox1.Checked)
+            {
+                chart2.Series[0].Enabled = true;
+            }
+            else
+            {
+                chart2.Series[0].Enabled= false;
+            }
+        }
+
+        private void checkBox2_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                chart2.Series[1].Enabled = true;
+            }
+            else
+            {
+                chart2.Series[1].Enabled = false;
+            }
+        }
+
+        private void checkBox3_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked)
+            {
+                chart2.Series[2].Enabled = true;
+            }
+            else
+            {
+                chart2.Series[2].Enabled = false;
+            }
+        }
+
+        private void checkBox4_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkBox4.Checked)
+            {
+                chart2.Series[3].Enabled = true;
+            }
+            else
+            {
+                chart2.Series[3].Enabled = false;
+            }
+        }
     }
 }

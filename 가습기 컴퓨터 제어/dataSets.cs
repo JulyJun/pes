@@ -236,11 +236,11 @@ namespace APICommon
             nearestTimeStr = HourPicker(DateTime);
             if (nearestTimeStr.Equals("0000"))
             {
-                nearestDay = (int.Parse(Date) + 2).ToString();
+                nearestDay = (int.Parse(Date) + 1).ToString();
             }
             else
             {
-                nearestDay = (int.Parse(Date) + 1).ToString();
+                nearestDay = (int.Parse(Date)).ToString();
             }
 
             for (int index = 0; index < xn.ChildNodes.Count; index++)

@@ -132,9 +132,11 @@ namespace DBCommon
         private string connQuery;
         private DataList _dataCollection;
         private string[] dataColumn =
-        { "idx", "co2", "co2_approx", "gas", "gas_approx", "temp", 
+        { 
+            "idx", "co2", "co2_approx", "gas", "gas_approx", "temp", 
             "temp_approx", "humid", "humid_approx", "room_occupied", 
-            "outdoor_temp", "outdoor_humid", "curr_date"};
+            "outdoor_temp", "outdoor_humid", "curr_date"
+        };
 
 
         // <summary>
@@ -178,6 +180,23 @@ namespace DBCommon
                 conn.Close();
             }
             return true;
+        }
+        public string GetDataName(string search)
+        {
+            string str = "";
+            for(int i = 0; i < dataColumn.Length; i++)
+            {
+                if (dataColumn[i].Equals(search))
+                {
+                    str = dataColumn[i];
+                    break;
+                }
+            }
+            if(str.Equals(""))
+            {
+                return "NODATA";
+            }
+            return str;
         }
         //
         //  return dataColumn[] string
@@ -316,6 +335,39 @@ namespace DBCommon
             cmd.CommandType = CommandType.TableDirect;
             cmd.ExecuteNonQuery();
             return true;
+        }
+
+        // 지금부터 어제시간동안의 평균
+        public double humidAvg()
+        {
+            double total = 0; 
+            cmd.CommandText = $"SELECT AVG({GetDataName("humid")}) AS avgHumid FROM {DBTable} WHERE update_time BETWEEN NOW() - INTERVAL  1 DAY AND NOW() HAVING COUNT({GetDataName("humid")}) > 0;";
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                reader.Read();
+                total = Convert.ToDouble(reader["avgHumid"]);
+            }
+            return total;
+        }
+
+        public double tempAvg()
+        {
+            double total = 0;
+
+            cmd.CommandText = $"SELECT AVG({GetDataName("temp")}) AS avgTemp FROM {DBTable} WHERE update_time BETWEEN NOW() - INTERVAL  1 DAY AND NOW() HAVING COUNT({GetDataName("temp")}) > 0;";
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+            //MySqlDataReader reader = cmd.ExecuteReader();
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                reader.Read();
+                total = Convert.ToDouble(reader["avgTemp"]);
+            }
+                return total;
         }
 
         public int TotalCount()
