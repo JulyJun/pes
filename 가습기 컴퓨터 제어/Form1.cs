@@ -51,11 +51,16 @@ namespace 가습기_컴퓨터_제어
         {
             InitializeComponent();
             InitializeValue();
+            timeInit();
+        }
+        private void timeInit()
+        {
             DBtimer = new Timer();
             RealtimeChartsTimer = new Timer();
             //timer.Interval = 108000000;
             DBtimer.Interval = 1000;
-            RealtimeChartsTimer.Interval= 120000;
+            //RealtimeChartsTimer.Interval= 120000;
+            RealtimeChartsTimer.Interval = 1000;
             DBtimer.Start();
             RealtimeChartsTimer.Start();
             DBtimer.Tick += timer1_Tick;
@@ -153,17 +158,25 @@ namespace 가습기_컴퓨터_제어
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
-            chart2.Series[0].Points.Add(chart2Counter, Convert.ToSingle(humid_g));
-            chart2.Series[1].Points.Add(chart2Counter, Convert.ToSingle(temp_g));
-            chart2.Series[2].Points.Add(chart2Counter, Convert.ToSingle(humid_gIn));
-            chart2.Series[3].Points.Add(chart2Counter, Convert.ToSingle(temp_gIn));
-            if (chart2.Series[0].Points.Count > 30)
+            chart2.Series[0].Points.AddXY(chart2Counter, Convert.ToDouble(humid_g));
+            chart2.Series[1].Points.AddXY(chart2Counter, Convert.ToDouble(temp_g));
+            chart2.Series[2].Points.AddXY(chart2Counter, Convert.ToDouble(humid_gIn));
+            chart2.Series[3].Points.AddXY(chart2Counter, Convert.ToDouble(temp_gIn));
+
+            if (chart2.Series[0].Points.Count > 100)
             {
-                chart2.Series.RemoveAt(0);
+                chart2.Series[0].Points.RemoveAt(0);
+                chart2.Series[1].Points.RemoveAt(0);
+                chart2.Series[2].Points.RemoveAt(0);
+                chart2.Series[3].Points.RemoveAt(0);
             }
 
-            chart2.ChartAreas[0].AxisX.Maximum = 100;
-            chart2.ChartAreas[0].AxisX.Minimum = 0;
+            if (chart2.Series[0].Points.Count > 0)
+            {
+                chart2.ChartAreas[0].AxisX.Minimum = chart2.Series[0].Points[0].XValue;
+            }
+
+            chart2.ChartAreas[0].AxisX.Maximum = chart2Counter;
             chart2Counter++;
         }
         private void InitializeValue()
@@ -184,12 +197,11 @@ namespace 가습기_컴퓨터_제어
             chart1.Series.Clear();
             chart1.ChartAreas.Clear();
 
-            chart2.Series.Clear();
-            chart2.ChartAreas.Clear();
-            for(int i = 0; i < chart2.Series.Count; i++)
+            for (int i = 0; i < chart2.Series.Count; i++)
             {
                 chart2.Series[i].Enabled = false;
             }
+            
 
             series.ChartType = SeriesChartType.Spline;
             series.IsValueShownAsLabel = true;
