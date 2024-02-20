@@ -4,6 +4,8 @@
 
 [KR README](https://github.com/JulyJun/pes/blob/main/READMEko.md)
 
+[Docs](https://docs.google.com/document/d/1sW_n9zYNOx1KwzWnBzls5Mqh1a720D3jN9b5PEEoYoM/edit)
+
 ### Description
  electricity saver on personal humidifier
 
